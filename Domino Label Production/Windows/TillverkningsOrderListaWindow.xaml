@@ -1,0 +1,57 @@
+﻿<Window x:Class="Domino_Label_Production.Windows.TillverkningsOrderListaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Domino_Label_Production.Windows"
+        mc:Ignorable="d"
+        Title="Tillverkningsorder lista" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Stang_Click">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                </Grid.ColumnDefinitions>
+                <fa:ImageAwesome Grid.Column="0" Grid.Row="0" Icon="TimesCircle" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                <Viewbox Grid.Column="1" Grid.Row="0" Margin="5,0,5,0">
+                    <TextBlock Text="        Stäng        " TextWrapping="Wrap" FontFamily="Helvetica" Foreground="White"/>
+                </Viewbox>
+            </Grid>
+        </Button>
+        <ListView x:Name="OrderLista" 
+                  ItemsSource="{Binding Order}"
+                  Grid.Column="0" 
+                  Grid.Row="1"
+                  Grid.ColumnSpan="3" 
+                  Grid.RowSpan="2"
+                  Margin="5"
+                  AlternationCount="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="TillverkningsorderNr." DisplayMemberBinding="{Binding TillverkningsOrderNummer}"/>
+                    <GridViewColumn Header="KundNr." DisplayMemberBinding="{Binding KundNummer}"/>
+                    <GridViewColumn Header="Lev.Datum" DisplayMemberBinding="{Binding Leveransdatum}"/>
+                    <GridViewColumn Header="ArtNr." DisplayMemberBinding="{Binding ArtikelNummer}"/>
+                    <GridViewColumn Header="ArtNamn." DisplayMemberBinding="{Binding ArtikelNamn}"/>
+                    <GridViewColumn Header="RåMatNr." DisplayMemberBinding="{Binding RåMaterialNummer}"/>
+                    <GridViewColumn Header="LOTNr." DisplayMemberBinding="{Binding LotNr}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

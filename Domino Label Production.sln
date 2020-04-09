@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domino Label Production", "Domino Label Production\Domino Label Production.csproj", "{BF30810E-5279-4F6B-8A01-EC491BD0B424}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF30810E-5279-4F6B-8A01-EC491BD0B424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF30810E-5279-4F6B-8A01-EC491BD0B424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF30810E-5279-4F6B-8A01-EC491BD0B424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF30810E-5279-4F6B-8A01-EC491BD0B424}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {196F6ACD-4FAF-4C7F-BEF1-5F8D76361C13}
+	EndGlobalSection
+EndGlobal
