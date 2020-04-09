@@ -25,11 +25,11 @@ namespace Domino_Label_Production
     public partial class MainWindow : Window
     {
         OrderService service = new OrderService();
+        MaskinStatus maskinStatusUC = new MaskinStatus();
         bool maskinStatusView;
         public MainWindow()
         {
             InitializeComponent();
-            MaskinStatus maskinStatusUC = new MaskinStatus();
             MainView.Content = maskinStatusUC;
             maskinStatusView = true;
             service.Watch();
@@ -56,9 +56,9 @@ namespace Domino_Label_Production
             
             if(!maskinStatusView)
             {
-                MaskinStatus maskinStatusUC = new MaskinStatus();
                 MainView.Content = maskinStatusUC;
                 maskinStatusView = true;
+                
             }
             else
             {

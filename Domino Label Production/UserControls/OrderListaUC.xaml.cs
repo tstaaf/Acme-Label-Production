@@ -28,6 +28,8 @@ namespace Domino_Label_Production.UserControls
     {
         Entities context = new Entities();
         CollectionViewSource ordersViewSource;
+        //MaskinStatus maskinStatus = new MaskinStatus();
+        Window maskinStatusP = Window.GetWindow(MaskinStatus);
         public OrderListaUC()
         {
             InitializeComponent();
@@ -61,9 +63,18 @@ namespace Domino_Label_Production.UserControls
         private void RefreshList_Click(object sender, RoutedEventArgs e)
         {
             context.Orders.Load();
-
+            //Skickas inte, varför?
             Orders order = (Orders)ordersDataGrid.SelectedItem;
             Console.WriteLine(order.ArtikelNamn);
+            maskinStatus.Maskin2Grid.Items.Add(order);
+            maskinStatus.orderLabel.Content = order.TillverkningsOrderNummer;
+            maskinStatus.kundLabel.Content = order.KundNummer;
+            maskinStatus.datumLabel.Content = order.Leveransdatum;
+            maskinStatus.artnrLabel.Content = order.ArtikelNummer;
+            maskinStatus.artnamnLabel.Content = order.ArtikelNamn;
+            maskinStatus.cylinderLabel.Content = order.Cylinder;
+            maskinStatus.stansLabel.Content = order.Stans;
+            maskinStatus.diameterLabel.Content = order.Diameter;
 
             ordersViewSource.Source = context.Orders.Local;
         }
