@@ -59,6 +59,9 @@ namespace Domino_Label_Production.UserControls
             //Skickas inte, varför?
             Orders order = (Orders)ordersDataGrid.SelectedItem;
             Console.WriteLine(order.ArtikelNamn);
+
+            ((MainWindow)Application.Current.MainWindow).SelectedOrder(order);
+
             OrderViewModel ovm = new OrderViewModel
             {
                 ordId = order.Id,

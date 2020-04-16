@@ -48,6 +48,12 @@ namespace Domino_Label_Production
 
         }
 
+        public void SelectedOrder(Orders order)
+        {
+            Console.WriteLine(order.ArtikelNamn);
+            maskinStatusUC.artnamnLabel.Content = order.ArtikelNamn;
+        }
+
         private void Avsluta_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -60,7 +66,6 @@ namespace Domino_Label_Production
             {
                 MainView.Content = maskinStatusUC;
                 maskinStatusView = true;
-                
             }
             else
             {
@@ -71,6 +76,11 @@ namespace Domino_Label_Production
         private void Ladda_Click(object sender, RoutedEventArgs e)
         {  
             MainView.Content = maskinval;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
