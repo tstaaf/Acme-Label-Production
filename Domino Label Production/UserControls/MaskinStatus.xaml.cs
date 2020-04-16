@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domino_Label_Production.Models;
+using Domino_Label_Production.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace Domino_Label_Production.UserControls
         public MaskinStatus()
         {
             InitializeComponent();
+            
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -35,6 +38,7 @@ namespace Domino_Label_Production.UserControls
             // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
             // 	myCollectionViewSource.Source = your data
             // }
+           
         }
     }
 }

@@ -125,6 +125,7 @@
     <Compile Include="UserControls\OrderListaUC.xaml.cs">
       <DependentUpon>OrderListaUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="Windows\TillverkningsOrderListaWindow.xaml.cs">
       <DependentUpon>TillverkningsOrderListaWindow.xaml</DependentUpon>
     </Compile>

@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Domino_Label_Production.UserControls;
 using Domino_Label_Production.Windows;
+using Domino_Label_Production.ViewModel;
 
 namespace Domino_Label_Production
 {
@@ -26,6 +27,9 @@ namespace Domino_Label_Production
     {
         OrderService service = new OrderService();
         MaskinStatus maskinStatusUC = new MaskinStatus();
+        OrderListaUC orderListaUC = new OrderListaUC();
+        MaskinValUC maskinval = new MaskinValUC();
+        public OrderViewModel ovm = new OrderViewModel();
         bool maskinStatusView;
         public MainWindow()
         {
@@ -37,10 +41,8 @@ namespace Domino_Label_Production
 
         private void TillverkningsOrderLista_Click(object sender, RoutedEventArgs e)
         {
-            var orderListaWindow = new TillverkningsOrderListaWindow();
+            //var orderListaWindow = new TillverkningsOrderListaWindow();
             //orderListaWindow.Show();
-
-            OrderListaUC orderListaUC = new OrderListaUC();
             MainView.Content = orderListaUC;
             maskinStatusView = false;
 
@@ -67,8 +69,7 @@ namespace Domino_Label_Production
         }
 
         private void Ladda_Click(object sender, RoutedEventArgs e)
-        {
-            MaskinValUC maskinval = new MaskinValUC();
+        {  
             MainView.Content = maskinval;
         }
     }

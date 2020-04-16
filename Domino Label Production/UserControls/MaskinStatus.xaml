@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Domino_Label_Production.UserControls"
              xmlns:Models="clr-namespace:Domino_Label_Production.Models" x:Class="Domino_Label_Production.UserControls.MaskinStatus"
+             xmlns:ordvm="clr-namespace:Domino_Label_Production.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <CollectionViewSource x:Key="ordersViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:Orders}, CreateList=True}"/>
+
     </UserControl.Resources>
     <Grid Margin="10" DataContext="{StaticResource ordersViewSource}">
         <Grid.Effect>
@@ -34,6 +36,9 @@
         </Border>
         <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Margin="10,0,10,0">
             <Grid x:Name="Maskin1Grid">
+                <Grid.DataContext>
+                    <ordvm:OrderViewModel/>
+                </Grid.DataContext>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -54,7 +59,7 @@
                 <Border Grid.Row="0" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Tillverkningsorder" Foreground="White"/>
-                        <Label x:Name="orderLabel" Content="-" Foreground="White"/>
+                        <Label x:Name="orderLabel" Content="{Binding ordTillverkningsOrderNummer}" Foreground="White"/>
                     </StackPanel>
                 </Border>
                 <Border Grid.Row="1" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
@@ -109,51 +114,8 @@
                 <Label Grid.Row="10" Content="LOT" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Border>
-        <DataGrid x:Name="Maskin2Grid" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0">
-            <DataGrid.LayoutTransform>
-                <TransformGroup>
-                    <RotateTransform Angle="90"/>
-                    <MatrixTransform Matrix="-1,0,0,1,0,0"/>
-                </TransformGroup>
-            </DataGrid.LayoutTransform>
-            <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
-                    <Setter Property="LayoutTransform">
-                        <Setter.Value>
-                            <TransformGroup>
-                                <RotateTransform Angle="-90"/>
-                                <ScaleTransform ScaleX="1" ScaleY="-1" />
-                            </TransformGroup>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.CellStyle>
-                <Style  TargetType="DataGridCell">
-                    <Setter Property="LayoutTransform">
-                        <Setter.Value>
-                            <TransformGroup>
-                                <RotateTransform Angle="-90"/>
-                                <ScaleTransform ScaleX="1" ScaleY="-1" />
-                            </TransformGroup>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </DataGrid.CellStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="idColumn" Width="SizeToHeader" Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn x:Name="tillverkningsOrderNummerColumn" Width="SizeToHeader" Header="Tillverkningsordernr." Binding="{Binding TillverkningsOrderNummer}"/>
-                <DataGridTextColumn x:Name="artikelNamnColumn" Width="SizeToHeader" Header="Artikelnamn" Binding="{Binding ArtikelNamn}"/>
-                <DataGridTextColumn x:Name="artikelNummerColumn" Width="SizeToHeader" Header="Artikelnummer" Binding="{Binding ArtikelNummer}"/>
-                <DataGridTextColumn x:Name="antalRulleColumn" Width="SizeToHeader" Header="Antal Rulle" Binding="{Binding AntalRulle}"/>
-                <DataGridTextColumn x:Name="leveransdatumColumn" Width="SizeToHeader" Header="Leveransdatum" Binding="{Binding Leveransdatum}"/>
-                <DataGridTextColumn x:Name="cylinderColumn" Width="SizeToHeader" Header="Cylinder" Binding="{Binding Cylinder}"/>
-                <DataGridTextColumn x:Name="diameterColumn" Width="SizeToHeader" Header="Diameter" Binding="{Binding Diameter}"/>
-                <DataGridTextColumn x:Name="stansColumn" Width="SizeToHeader" Header="Stans" Binding="{Binding Stans}"/>
-                <DataGridTextColumn x:Name="råMaterialNummerColumn" Width="SizeToHeader" Header="Råmaterialnr." Binding="{Binding RåMaterialNummer}"/>
-                <DataGridTextColumn x:Name="kundNummerColumn" Width="SizeToHeader" Header="Kundnummer" Binding="{Binding KundNummer}"/>
-                <DataGridTextColumn x:Name="lotNrColumn" Width="SizeToHeader" Header="Lot Nr" Binding="{Binding LotNr}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Button x:Name="Maskin2Grid"  Grid.Row="1" Grid.Column="1" Margin="100" Content="Klick" Click="Maskin2Grid_Click">
+            
+        </Button>
     </Grid>
 </UserControl>
