@@ -24,6 +24,16 @@
         <Button Grid.Column="0" Margin="10,5,5,5" HorizontalAlignment="Right" Click="RefreshList_Click">
             <fa:ImageAwesome Margin="5" Icon="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
         </Button>
+        <Viewbox Grid.Column="1" Margin="10,5,5,5">
+            <Button HorizontalAlignment="Center" Background="#003B5C" Click="SkickaTillMaskin1_Click">
+                <Label Margin="5" Content="Skicka vald order till maskin 1" Foreground="White" FontSize="25" FontFamily="Helvetica"/>
+            </Button>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Margin="10,5,5,5">
+            <Button HorizontalAlignment="Center" Background="#003B5C" Click="SkickaTillMaskin2_Click">
+                <Label Margin="5" Content="Skicka vald order till maskin 2" Foreground="White" FontSize="25" FontFamily="Helvetica"/>
+            </Button>
+        </Viewbox>
         <DataGrid x:Name="ordersDataGrid"
                   RowDetailsVisibilityMode="VisibleWhenSelected"
                   Grid.Row="1" Grid.RowSpan="1"

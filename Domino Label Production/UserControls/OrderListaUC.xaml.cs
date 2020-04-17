@@ -1,24 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CsvHelper;
 using Domino_Label_Production.Models;
-using Domino_Label_Production.Service;
 using System.Data.Entity;
-using Domino_Label_Production.ViewModel;
 
 namespace Domino_Label_Production.UserControls
 {
@@ -56,30 +41,20 @@ namespace Domino_Label_Production.UserControls
         private void RefreshList_Click(object sender, RoutedEventArgs e)
         {
             context.Orders.Load();
-            //Skickas inte, varför?
-            Orders order = (Orders)ordersDataGrid.SelectedItem;
-            Console.WriteLine(order.ArtikelNamn);
-
-            ((MainWindow)Application.Current.MainWindow).SelectedOrder(order);
-
-            OrderViewModel ovm = new OrderViewModel
-            {
-                ordId = order.Id,
-                ordKundNummer = order.KundNummer,
-                ordLeveransdatum = order.Leveransdatum,
-                ordAntalRulle = order.AntalRulle,
-                ordCylinder = order.Cylinder,
-                ordStans = order.Stans,
-                ordDiameter = order.Diameter,
-                ordArtikelNummer = order.ArtikelNummer,
-                ordArtikelNamn = order.ArtikelNamn,
-                ordRåMaterialNummer = order.RåMaterialNummer,
-                ordLotNr = order.LotNr
-            };
-
-
 
             ordersViewSource.Source = context.Orders.Local;
+        }
+
+        private void SkickaTillMaskin1_Click(object sender, RoutedEventArgs e)
+        {
+            Orders order = (Orders)ordersDataGrid.SelectedItem;
+            ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin1(order);
+        }
+
+        private void SkickaTillMaskin2_Click(object sender, RoutedEventArgs e)
+        {
+            Orders order = (Orders)ordersDataGrid.SelectedItem;
+            ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin2(order);
         }
     }
 }

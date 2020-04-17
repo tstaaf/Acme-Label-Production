@@ -24,14 +24,14 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,0,10,0" Background="#005983">
+        <Border Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,0,10,0" Background="#003B5C">
             <Viewbox>
-                <TextBlock Text="Maskin 1" TextAlignment="Center"  FontSize="25" FontFamily="Helvetica"  Foreground="White" />
+                <TextBlock Text="Maskin 1" TextAlignment="Center" FontFamily="Helvetica" Foreground="White" />
             </Viewbox>
         </Border>
-        <Border Grid.Row="0" Grid.Column="2"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,0,10,0" Background="#005983">
+        <Border Grid.Row="0" Grid.Column="2"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,0,10,0" Background="#003B5C">
             <Viewbox>
-                <TextBlock Text="Maskin 2" TextAlignment="Center"  FontSize="25" FontFamily="Helvetica"  Foreground="White" />
+                <TextBlock Text="Maskin 2" TextAlignment="Center" FontFamily="Helvetica"  Foreground="White" />
             </Viewbox>
         </Border>
         <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Margin="10,0,10,0">
@@ -56,66 +56,207 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Row="0" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="0" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Tillverkningsorder" Foreground="White"/>
-                        <Label x:Name="orderLabel" Content="{Binding ordTillverkningsOrderNummer}" Foreground="White"/>
+                        <Label x:Name="orderLabel" Content="-" Foreground="White"/>
                     </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Border Grid.Row="1" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="1" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Kund" Foreground="White"/>
                         <Label x:Name="kundLabel" Content="-" Foreground="White"/>
                     </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Border Grid.Row="2" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="2" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Leveransdatum" Foreground="White"/>
                         <Label x:Name="datumLabel" Content="-" Foreground="White"/>
                     </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Border Grid.Row="3" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="3" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Artikelnummer" Foreground="White"/>
                         <Label x:Name="artnrLabel" Content="-" Foreground="White"/>
-                    </StackPanel>
+                        </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Border Grid.Row="4" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="4" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Artikelnamn" Foreground="White"/>
                         <Label x:Name="artnamnLabel" Content="-" Foreground="White"/>
                     </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Border Grid.Row="5" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="5" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Antal" Foreground="White"/>
                         <Label x:Name="antalLabel" Content="-" Foreground="White"/>
                     </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Border Grid.Row="6" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="6" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Cylinder" Foreground="White"/>
                         <Label x:Name="cylinderLabel" Content="-" Foreground="White"/>
                     </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Border Grid.Row="7" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="7" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Stans" Foreground="White"/>
                         <Label x:Name="stansLabel" Content="-" Foreground="White"/>
                     </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Border Grid.Row="8" Background="#4881b2" BorderThickness="1" Grid.ColumnSpan="2">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border Grid.Row="8" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="Diameter" Foreground="White"/>
                         <Label x:Name="diameterLabel" Content="-" Foreground="White"/>
                     </StackPanel>
+                    </Viewbox>
                 </Border>
-                <Label Grid.Row="9" Content="Råmaterial" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Row="10" Content="LOT" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border Grid.Row="9" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Råmaterial" Foreground="White"/>
+                        <Label x:Name="rawmatLabel" Content="-" Foreground="White"/>
+                    </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="10" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="LOT" Foreground="White"/>
+                        <Label x:Name="LOTLabel" Content="-" Foreground="White"/>
+                    </StackPanel>
+                    </Viewbox>
+                </Border>
             </Grid>
         </Border>
-        <Button x:Name="Maskin2Grid"  Grid.Row="1" Grid.Column="1" Margin="100" Content="Klick" Click="Maskin2Grid_Click">
-            
-        </Button>
+        <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Margin="10,0,10,0">
+            <Grid x:Name="Maskin2Grid">
+                <Grid.DataContext>
+                    <ordvm:OrderViewModel/>
+                </Grid.DataContext>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Tillverkningsorder" Foreground="White"/>
+                            <Label x:Name="orderLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="1" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Kund" Foreground="White"/>
+                            <Label x:Name="kundLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="2" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Leveransdatum" Foreground="White"/>
+                            <Label x:Name="datumLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="3" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Artikelnummer" Foreground="White"/>
+                            <Label x:Name="artnrLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="4" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Artikelnamn" Foreground="White"/>
+                            <Label x:Name="artnamnLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="5" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Antal" Foreground="White"/>
+                            <Label x:Name="antalLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="6" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Cylinder" Foreground="White"/>
+                            <Label x:Name="cylinderLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="7" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Stans" Foreground="White"/>
+                            <Label x:Name="stansLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="8" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Diameter" Foreground="White"/>
+                            <Label x:Name="diameterLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="9" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Råmaterial" Foreground="White"/>
+                            <Label x:Name="rawmatLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="10" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="LOT" Foreground="White"/>
+                            <Label x:Name="LOTLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

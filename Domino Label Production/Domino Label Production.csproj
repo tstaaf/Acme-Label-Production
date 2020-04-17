@@ -202,6 +202,7 @@
     <Resource Include="Bilder\domino.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Bilder\Domino-logo-800px.jpg" />
     <Content Include="Domino_Label_Production.OrderContext.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -48,10 +48,33 @@ namespace Domino_Label_Production
 
         }
 
-        public void SelectedOrder(Orders order)
+        public void SelectedOrderMaskin1(Orders order)
         {
-            Console.WriteLine(order.ArtikelNamn);
+            maskinStatusUC.orderLabel.Content = order.TillverkningsOrderNummer;
+            maskinStatusUC.kundLabel.Content = order.KundNummer;
+            maskinStatusUC.datumLabel.Content = order.Leveransdatum;
+            maskinStatusUC.artnrLabel.Content = order.ArtikelNummer;
             maskinStatusUC.artnamnLabel.Content = order.ArtikelNamn;
+            maskinStatusUC.antalLabel.Content = order.AntalRulle;
+            maskinStatusUC.cylinderLabel.Content = order.Cylinder;
+            maskinStatusUC.stansLabel.Content = order.Stans;
+            maskinStatusUC.diameterLabel.Content = order.Diameter;
+            maskinStatusUC.rawmatLabel.Content = order.RåMaterialNummer;
+            maskinStatusUC.LOTLabel.Content = order.LotNr;
+        }
+        public void SelectedOrderMaskin2(Orders order)
+        {
+            maskinStatusUC.orderLabelM2.Content = order.TillverkningsOrderNummer;
+            maskinStatusUC.kundLabelM2.Content = order.KundNummer;
+            maskinStatusUC.datumLabelM2.Content = order.Leveransdatum;
+            maskinStatusUC.artnrLabelM2.Content = order.ArtikelNummer;
+            maskinStatusUC.artnamnLabelM2.Content = order.ArtikelNamn;
+            maskinStatusUC.antalLabelM2.Content = order.AntalRulle;
+            maskinStatusUC.cylinderLabelM2.Content = order.Cylinder;
+            maskinStatusUC.stansLabelM2.Content = order.Stans;
+            maskinStatusUC.diameterLabelM2.Content = order.Diameter;
+            maskinStatusUC.rawmatLabelM2.Content = order.RåMaterialNummer;
+            maskinStatusUC.LOTLabelM2.Content = order.LotNr;
         }
 
         private void Avsluta_Click(object sender, RoutedEventArgs e)

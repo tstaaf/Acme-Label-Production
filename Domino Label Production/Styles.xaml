@@ -5,14 +5,14 @@
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush>
-                    <GradientStop Color="#009d58" Offset="1"/>
-                    <GradientStop Color="#51cf86" Offset="1"/>
+                    <GradientStop Color="#009639" Offset="1"/>
+                    <GradientStop Color="#40b06b" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect BlurRadius="3" RenderingBias="Quality" ShadowDepth="1"/>
+                <DropShadowEffect BlurRadius="2" RenderingBias="Quality" ShadowDepth="1"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush" Value="Black"/>

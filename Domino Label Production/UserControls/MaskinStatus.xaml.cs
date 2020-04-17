@@ -40,10 +40,5 @@ namespace Domino_Label_Production.UserControls
             // }
            
         }
-
-        private void Maskin2Grid_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
