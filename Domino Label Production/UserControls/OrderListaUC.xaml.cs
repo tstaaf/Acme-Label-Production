@@ -48,13 +48,40 @@ namespace Domino_Label_Production.UserControls
         private void SkickaTillMaskin1_Click(object sender, RoutedEventArgs e)
         {
             Orders order = (Orders)ordersDataGrid.SelectedItem;
-            ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin1(order);
+            MessageBoxResult result = MessageBox.Show("Är du säker på att du vill skicka order: " + order.TillverkningsOrderNummer + " till maskin 1?", "Bekräfta order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin1(order);
+                    context.Orders.Remove(order);
+                    context.SaveChanges();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+            context.Orders.Load();
+            
+            ordersViewSource.Source = context.Orders.Local;
+
         }
 
         private void SkickaTillMaskin2_Click(object sender, RoutedEventArgs e)
         {
             Orders order = (Orders)ordersDataGrid.SelectedItem;
-            ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin2(order);
+            MessageBoxResult result = MessageBox.Show("Är du säker på att du vill skicka order: " + order.TillverkningsOrderNummer + " till maskin 2?", "Bekräfta order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin2(order);
+                    context.Orders.Remove(order);
+                    context.SaveChanges();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+            context.Orders.Load();
+
+            ordersViewSource.Source = context.Orders.Local;
         }
     }
 }

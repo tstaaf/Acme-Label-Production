@@ -25,13 +25,13 @@
             <fa:ImageAwesome Margin="5" Icon="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
         </Button>
         <Viewbox Grid.Column="1" Margin="10,5,5,5">
-            <Button HorizontalAlignment="Center" Background="#003B5C" Click="SkickaTillMaskin1_Click">
-                <Label Margin="5" Content="Skicka vald order till maskin 1" Foreground="White" FontSize="25" FontFamily="Helvetica"/>
+            <Button HorizontalAlignment="Center" Click="SkickaTillMaskin1_Click">
+                <Label Margin="5" Content="Skicka vald order till maskin 1" Foreground="White" FontSize="35" FontFamily="Helvetica"/>
             </Button>
         </Viewbox>
         <Viewbox Grid.Column="2" Margin="10,5,5,5">
-            <Button HorizontalAlignment="Center" Background="#003B5C" Click="SkickaTillMaskin2_Click">
-                <Label Margin="5" Content="Skicka vald order till maskin 2" Foreground="White" FontSize="25" FontFamily="Helvetica"/>
+            <Button HorizontalAlignment="Center" Click="SkickaTillMaskin2_Click">
+                <Label Margin="5" Content="Skicka vald order till maskin 2" Foreground="White" FontSize="35" FontFamily="Helvetica"/>
             </Button>
         </Viewbox>
         <DataGrid x:Name="ordersDataGrid"
@@ -42,19 +42,26 @@
                   EnableRowVirtualization="True"
                   Grid.ColumnSpan="3"
                   AutoGenerateColumns="False">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Width" Value="Auto"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="FontSize" Value="15"/>
+                </Style>
+            </DataGrid.CellStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="idColumn" Width="SizeToHeader" Header="Id" Binding="{Binding Id}"/>
-                <DataGridTextColumn x:Name="tillverkningsOrderNummerColumn" Width="SizeToHeader" Header="Tillverkningsordernr." Binding="{Binding TillverkningsOrderNummer}"/>
-                <DataGridTextColumn x:Name="artikelNamnColumn" Width="SizeToHeader" Header="Artikelnamn" Binding="{Binding ArtikelNamn}"/>
-                <DataGridTextColumn x:Name="artikelNummerColumn" Width="SizeToHeader" Header="Artikelnummer" Binding="{Binding ArtikelNummer}"/>
-                <DataGridTextColumn x:Name="antalRulleColumn" Width="SizeToHeader" Header="Antal Rulle" Binding="{Binding AntalRulle}"/>
-                <DataGridTextColumn x:Name="leveransdatumColumn" Width="SizeToHeader" Header="Leveransdatum" Binding="{Binding Leveransdatum}"/>
-                <DataGridTextColumn x:Name="cylinderColumn" Width="SizeToHeader" Header="Cylinder" Binding="{Binding Cylinder}"/>
-                <DataGridTextColumn x:Name="diameterColumn" Width="SizeToHeader" Header="Diameter" Binding="{Binding Diameter}"/>
-                <DataGridTextColumn x:Name="stansColumn" Width="SizeToHeader" Header="Stans" Binding="{Binding Stans}"/>
-                <DataGridTextColumn x:Name="råMaterialNummerColumn" Width="SizeToHeader" Header="Råmaterialnr." Binding="{Binding RåMaterialNummer}"/>
-                <DataGridTextColumn x:Name="kundNummerColumn" Width="SizeToHeader" Header="Kundnummer" Binding="{Binding KundNummer}"/>
-                <DataGridTextColumn x:Name="lotNrColumn" Width="SizeToHeader" Header="Lot Nr" Binding="{Binding LotNr}"/>
+                <DataGridTextColumn x:Name="idColumn" Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn x:Name="tillverkningsOrderNummerColumn" Header="Tillverkningsordernr." Binding="{Binding TillverkningsOrderNummer}"/>
+                <DataGridTextColumn x:Name="artikelNamnColumn" Header="Artikelnamn" Binding="{Binding ArtikelNamn}"/>
+                <DataGridTextColumn x:Name="artikelNummerColumn" Header="Artikelnummer" Binding="{Binding ArtikelNummer}"/>
+                <DataGridTextColumn x:Name="antalRulleColumn" Header="Antal Rulle" Binding="{Binding AntalRulle}"/>
+                <DataGridTextColumn x:Name="leveransdatumColumn" Header="Leveransdatum" Binding="{Binding Leveransdatum}"/>
+                <DataGridTextColumn x:Name="cylinderColumn" Header="Cylinder" Binding="{Binding Cylinder}"/>
+                <DataGridTextColumn x:Name="diameterColumn" Header="Diameter" Binding="{Binding Diameter}"/>
+                <DataGridTextColumn x:Name="stansColumn" Header="Stans" Binding="{Binding Stans}"/>
+                <DataGridTextColumn x:Name="råMaterialNummerColumn" Header="Råmaterialnr." Binding="{Binding RåMaterialNummer}"/>
+                <DataGridTextColumn x:Name="kundNummerColumn" Header="Kundnummer" Binding="{Binding KundNummer}"/>
+                <DataGridTextColumn x:Name="lotNrColumn" Header="Lot Nr" Binding="{Binding LotNr}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -22,43 +22,4 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <!--<Style TargetType="DataGrid">
-        <Setter Property="LayoutTransform">
-            <Setter.Value>
-                <TransformGroup>
-                    <RotateTransform Angle="90"/>
-                    <MatrixTransform Matrix="-1,0,0,1,0,0"/>
-                </TransformGroup>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="ColumnHeaderStyle">
-            <Setter.Value>
-                <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
-                    <Setter Property="LayoutTransform">
-                        <Setter.Value>
-                            <TransformGroup>
-                                <RotateTransform Angle="-90"/>
-                                <ScaleTransform ScaleX="1" ScaleY="-1" />
-                            </TransformGroup>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="CellStyle">
-            <Setter.Value>
-                <Style  TargetType="DataGridCell">
-                    <Setter Property="LayoutTransform">
-                        <Setter.Value>
-                            <TransformGroup>
-                                <RotateTransform Angle="-90"/>
-                                <ScaleTransform ScaleX="1" ScaleY="-1" />
-                            </TransformGroup>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-    
 </ResourceDictionary>

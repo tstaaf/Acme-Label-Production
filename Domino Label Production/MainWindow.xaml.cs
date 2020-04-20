@@ -29,7 +29,6 @@ namespace Domino_Label_Production
         MaskinStatus maskinStatusUC = new MaskinStatus();
         OrderListaUC orderListaUC = new OrderListaUC();
         MaskinValUC maskinval = new MaskinValUC();
-        public OrderViewModel ovm = new OrderViewModel();
         bool maskinStatusView;
         public MainWindow()
         {
