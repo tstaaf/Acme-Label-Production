@@ -8,22 +8,66 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Domino_Label_Production.Properties
-{
-
-
+namespace Domino_Label_Production.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.2.204")]
+        public string MSerieIP {
+            get {
+                return ((string)(this["MSerieIP"]));
+            }
+            set {
+                this["MSerieIP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9100")]
+        public int MSeriePort {
+            get {
+                return ((int)(this["MSeriePort"]));
+            }
+            set {
+                this["MSeriePort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Ax\\print.txt")]
+        public string AxFilePath {
+            get {
+                return ((string)(this["AxFilePath"]));
+            }
+            set {
+                this["AxFilePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Intermec\\print.txt")]
+        public string IntermecFilePath {
+            get {
+                return ((string)(this["IntermecFilePath"]));
+            }
+            set {
+                this["IntermecFilePath"] = value;
             }
         }
     }

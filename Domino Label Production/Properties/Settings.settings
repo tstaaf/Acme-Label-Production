@@ -1,7 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Domino_Label_Production.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MSerieIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.2.204</Value>
+    </Setting>
+    <Setting Name="MSeriePort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9100</Value>
+    </Setting>
+    <Setting Name="AxFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Ax\print.txt</Value>
+    </Setting>
+    <Setting Name="IntermecFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Intermec\print.txt</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

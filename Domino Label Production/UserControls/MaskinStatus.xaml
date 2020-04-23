@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Domino_Label_Production.UserControls"
              xmlns:Models="clr-namespace:Domino_Label_Production.Models" x:Class="Domino_Label_Production.UserControls.MaskinStatus"
-             xmlns:ordvm="clr-namespace:Domino_Label_Production.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <UserControl.Resources>
@@ -36,9 +35,6 @@
         </Border>
         <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Margin="10,0,10,0">
             <Grid x:Name="Maskin1Grid">
-                <Grid.DataContext>
-                    <ordvm:OrderViewModel/>
-                </Grid.DataContext>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -148,9 +144,6 @@
         </Border>
         <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Margin="10,0,10,0">
             <Grid x:Name="Maskin2Grid">
-                <Grid.DataContext>
-                    <ordvm:OrderViewModel/>
-                </Grid.DataContext>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>

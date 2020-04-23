@@ -16,7 +16,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Domino_Label_Production.UserControls;
 using Domino_Label_Production.Windows;
-using Domino_Label_Production.ViewModel;
+using System.Net.Sockets;
+using System.IO;
+using WPFCustomMessageBox;
 
 namespace Domino_Label_Production
 {
@@ -96,13 +98,141 @@ namespace Domino_Label_Production
         }
 
         private void Ladda_Click(object sender, RoutedEventArgs e)
-        {  
-            MainView.Content = maskinval;
+        {
+            var result = CustomMessageBox.ShowYesNoCancel("Vilken maskin vill du skicka till?", "Skicka Order", "Maskin 1", "Maskin 2", "Avbryt", MessageBoxImage.Information);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    SendToMSerie(maskinStatusUC.artnrLabel.Content.ToString(), 
+                        maskinStatusUC.artnamnLabel.Content.ToString(),
+                        maskinStatusUC.antalLabel.Content.ToString(),
+                        maskinStatusUC.LOTLabel.Content.ToString(),
+                        maskinStatusUC.orderLabel.Content.ToString());
+                    SendToAX1(maskinStatusUC.artnamnLabel.Content.ToString(),
+                        maskinStatusUC.orderLabel.Content.ToString(),
+                        maskinStatusUC.LOTLabel.Content.ToString());
+                    break;
+                case MessageBoxResult.No:
+                    SendToMSerie2(maskinStatusUC.artnrLabelM2.Content.ToString(),
+                        maskinStatusUC.artnamnLabelM2.Content.ToString(),
+                        maskinStatusUC.antalLabelM2.Content.ToString(),
+                        maskinStatusUC.LOTLabelM2.Content.ToString(),
+                        maskinStatusUC.orderLabelM2.Content.ToString());
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Settings_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+        static void SendToMSerie(string artNr, string artNamn, string antal, string lot, string orderNr)
+        {
+            try
+            {
+                string MserieIP = Properties.Settings.Default.MSerieIP;
+                int MSeriePort = Properties.Settings.Default.MSeriePort;
+                TcpClient client = new TcpClient(MserieIP, MSeriePort);
+                string sendString1 = (char)2 + "019E1??" + (char)13;
+                string sendString2 = (char)2 + "02C??" + (char)13;
+                string message = (char)2 + "00D" + artNr + (char)10 + artNamn + (char)10 + antal + (char)10 + lot + (char)10 + orderNr + "??" + (char)13;
+
+                byte[] data = Encoding.ASCII.GetBytes(sendString1);
+                byte[] data2 = Encoding.ASCII.GetBytes(sendString2);
+                byte[] dataMessage = Encoding.ASCII.GetBytes(message);
+
+                NetworkStream stream = client.GetStream();
+                stream.Write(data, 0, data.Length);
+                stream.Write(data2, 0, data2.Length);
+                stream.Write(dataMessage, 0, dataMessage.Length);
+                Console.WriteLine("Sent: {0}", sendString1);
+                Console.WriteLine("Sent: {0}", sendString2);
+                Console.WriteLine("Sent: {0}", message);
+
+                data = new byte[256];
+                string response = string.Empty;
+
+                int bytes = stream.Read(data, 0, data.Length);
+                response = Encoding.ASCII.GetString(data, 0, bytes);
+                Console.WriteLine("Recieved: {0}", response);
+
+                stream.Close();
+                client.Close();
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+        }
+        static void SendToMSerie2(string artNr, string artNamn, string antal, string lot, string orderNr)
+        {
+            try
+            {
+                string MserieIP = Properties.Settings.Default.MSerieIP;
+                int MSeriePort = Properties.Settings.Default.MSeriePort;
+                TcpClient client = new TcpClient(MserieIP, MSeriePort);
+                string sendString1 = (char)2 + "019E2??" + (char)13;
+                string sendString2 = (char)2 + "02C??" + (char)13;
+                string message = (char)2 + "00D" + artNr + (char)10 + artNamn + (char)10 + antal + (char)10 + lot + (char)10 + orderNr + "??" + (char)13;
+
+                byte[] data = Encoding.ASCII.GetBytes(sendString1);
+                byte[] data2 = Encoding.ASCII.GetBytes(sendString2);
+                byte[] dataMessage = Encoding.ASCII.GetBytes(message);
+
+                NetworkStream stream = client.GetStream();
+                stream.Write(data, 0, data.Length);
+                stream.Write(data2, 0, data2.Length);
+                stream.Write(dataMessage, 0, dataMessage.Length);
+                Console.WriteLine("Sent: {0}", sendString1);
+                Console.WriteLine("Sent: {0}", sendString2);
+                Console.WriteLine("Sent: {0}", message);
+
+                data = new byte[256];
+                string response = string.Empty;
+
+                int bytes = stream.Read(data, 0, data.Length);
+                response = Encoding.ASCII.GetString(data, 0, bytes);
+                Console.WriteLine("Recieved: {0}", response);
+
+                stream.Close();
+                client.Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+        }
+        static void SendToAX1(string artNr, string orderNr, string lot)
+        {
+            try
+            {
+                string path = Properties.Settings.Default.AxFilePath;
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(artNr);
+                        sw.WriteLine(orderNr);
+                        sw.WriteLine(lot);
+                    }
+                }
+                else
+                {
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(artNr);
+                        sw.WriteLine(orderNr);
+                        sw.WriteLine(lot);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
         }
     }
 }
