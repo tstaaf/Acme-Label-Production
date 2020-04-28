@@ -127,16 +127,16 @@
                 <Border Grid.Row="9" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                        <Label Content="Råmaterial" Foreground="White"/>
-                        <Label x:Name="rawmatLabel" Content="-" Foreground="White"/>
-                    </StackPanel>
+                            <Label Content="Råmaterial" Foreground="White"/>
+                            <TextBox x:Name="rawmatText" Foreground="White" Text="Ange RåmatNr." VerticalAlignment="Center" Background="#406c85"/>
+                        </StackPanel>
                     </Viewbox>
                 </Border>
                 <Border Grid.Row="10" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="LOT" Foreground="White"/>
-                        <Label x:Name="LOTLabel" Content="-" Foreground="White"/>
+                        <TextBox x:Name="LOTText" Foreground="White" Text="Ange LotNr." VerticalAlignment="Center" Background="#406c85"/>
                     </StackPanel>
                     </Viewbox>
                 </Border>
@@ -237,7 +237,7 @@
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <Label Content="Råmaterial" Foreground="White"/>
-                            <Label x:Name="rawmatLabelM2" Content="-" Foreground="White"/>
+                            <TextBox x:Name="rawmatTextM2" Foreground="White" Text="Ange RåmatNr." VerticalAlignment="Center" Background="#406c85"/>
                         </StackPanel>
                     </Viewbox>
                 </Border>
@@ -245,7 +245,7 @@
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <Label Content="LOT" Foreground="White"/>
-                            <Label x:Name="LOTLabelM2" Content="-" Foreground="White"/>
+                            <TextBox x:Name="LOTTextM2" Foreground="White" Text="Ange LotNr." VerticalAlignment="Center" Background="#406c85"/>
                         </StackPanel>
                     </Viewbox>
                 </Border>

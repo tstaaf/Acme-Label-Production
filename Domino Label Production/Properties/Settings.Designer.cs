@@ -25,7 +25,7 @@ namespace Domino_Label_Production.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.2.204")]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
         public string MSerieIP {
             get {
                 return ((string)(this["MSerieIP"]));
@@ -61,6 +61,18 @@ namespace Domino_Label_Production.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Ax\\print2.txt")]
+        public string Ax2FilePath {
+            get {
+                return ((string)(this["Ax2FilePath"]));
+            }
+            set {
+                this["Ax2FilePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Intermec\\print.txt")]
         public string IntermecFilePath {
             get {
@@ -68,6 +80,67 @@ namespace Domino_Label_Production.Properties {
             }
             set {
                 this["IntermecFilePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Intermec\\print2.txt" +
+            "")]
+        public string Intermec2FilePath {
+            get {
+                return ((string)(this["Intermec2FilePath"]));
+            }
+            set {
+                this["Intermec2FilePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PLC1IP {
+            get {
+                return ((string)(this["PLC1IP"]));
+            }
+            set {
+                this["PLC1IP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int PLC1Port {
+            get {
+                return ((int)(this["PLC1Port"]));
+            }
+            set {
+                this["PLC1Port"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PLC2IP {
+            get {
+                return ((string)(this["PLC2IP"]));
+            }
+            set {
+                this["PLC2IP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int PLC2Port {
+            get {
+                return ((int)(this["PLC2Port"]));
+            }
+            set {
+                this["PLC2Port"] = value;
             }
         }
     }

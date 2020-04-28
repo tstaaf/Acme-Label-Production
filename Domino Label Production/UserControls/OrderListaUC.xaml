@@ -81,7 +81,6 @@
                 <DataGridTextColumn x:Name="stansColumn" Header="Stans" Binding="{Binding Stans}"/>
                 <DataGridTextColumn x:Name="råMaterialNummerColumn" Header="Råmaterialnr." Binding="{Binding RåMaterialNummer}"/>
                 <DataGridTextColumn x:Name="kundNummerColumn" Header="Kundnummer" Binding="{Binding KundNummer}"/>
-                <DataGridTextColumn x:Name="lotNrColumn" Header="Lot Nr" Binding="{Binding LotNr}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

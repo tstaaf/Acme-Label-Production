@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MSerieIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.2.204</Value>
+      <Value Profile="(Default)">127.0.0.1</Value>
     </Setting>
     <Setting Name="MSeriePort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">9100</Value>
@@ -11,8 +11,26 @@
     <Setting Name="AxFilePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Ax\print.txt</Value>
     </Setting>
+    <Setting Name="Ax2FilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Ax\print2.txt</Value>
+    </Setting>
     <Setting Name="IntermecFilePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Intermec\print.txt</Value>
+    </Setting>
+    <Setting Name="Intermec2FilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Intermec\print2.txt</Value>
+    </Setting>
+    <Setting Name="PLC1IP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PLC1Port" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PLC2IP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PLC2Port" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

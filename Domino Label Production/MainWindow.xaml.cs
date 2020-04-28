@@ -60,8 +60,6 @@ namespace Domino_Label_Production
             maskinStatusUC.cylinderLabel.Content = order.Cylinder;
             maskinStatusUC.stansLabel.Content = order.Stans;
             maskinStatusUC.diameterLabel.Content = order.Diameter;
-            maskinStatusUC.rawmatLabel.Content = order.RåMaterialNummer;
-            maskinStatusUC.LOTLabel.Content = order.LotNr;
         }
         public void SelectedOrderMaskin2(Orders order)
         {
@@ -74,8 +72,6 @@ namespace Domino_Label_Production
             maskinStatusUC.cylinderLabelM2.Content = order.Cylinder;
             maskinStatusUC.stansLabelM2.Content = order.Stans;
             maskinStatusUC.diameterLabelM2.Content = order.Diameter;
-            maskinStatusUC.rawmatLabelM2.Content = order.RåMaterialNummer;
-            maskinStatusUC.LOTLabelM2.Content = order.LotNr;
         }
 
         private void Avsluta_Click(object sender, RoutedEventArgs e)
@@ -106,17 +102,30 @@ namespace Domino_Label_Production
                     SendToMSerie(maskinStatusUC.artnrLabel.Content.ToString(), 
                         maskinStatusUC.artnamnLabel.Content.ToString(),
                         maskinStatusUC.antalLabel.Content.ToString(),
-                        maskinStatusUC.LOTLabel.Content.ToString(),
+                        maskinStatusUC.LOTText.Text.ToString(),
                         maskinStatusUC.orderLabel.Content.ToString());
                     SendToAX1(maskinStatusUC.artnamnLabel.Content.ToString(),
                         maskinStatusUC.orderLabel.Content.ToString(),
-                        maskinStatusUC.LOTLabel.Content.ToString());
+                        maskinStatusUC.LOTText.Text.ToString());
+                    SendToIntermec1(maskinStatusUC.artnrLabel.Content.ToString(),
+                        maskinStatusUC.artnamnLabel.Content.ToString(),
+                        maskinStatusUC.antalLabel.Content.ToString(),
+                        maskinStatusUC.orderLabel.Content.ToString(),
+                        maskinStatusUC.LOTText.Text.ToString());
                     break;
                 case MessageBoxResult.No:
                     SendToMSerie2(maskinStatusUC.artnrLabelM2.Content.ToString(),
                         maskinStatusUC.artnamnLabelM2.Content.ToString(),
                         maskinStatusUC.antalLabelM2.Content.ToString(),
-                        maskinStatusUC.LOTLabelM2.Content.ToString(),
+                        maskinStatusUC.LOTTextM2.Text.ToString(),
+                        maskinStatusUC.orderLabelM2.Content.ToString());
+                    SendToAX2(maskinStatusUC.artnamnLabelM2.Content.ToString(),
+                        maskinStatusUC.orderLabelM2.Content.ToString(),
+                        maskinStatusUC.LOTTextM2.Text.ToString());
+                    SendToIntermec2(maskinStatusUC.artnrLabelM2.Content.ToString(),
+                        maskinStatusUC.artnamnLabelM2.Content.ToString(),
+                        maskinStatusUC.antalLabelM2.Content.ToString(),
+                        maskinStatusUC.LOTTextM2.Text.ToString(),
                         maskinStatusUC.orderLabelM2.Content.ToString());
                     break;
                 default:
@@ -233,6 +242,108 @@ namespace Domino_Label_Production
             {
                 MessageBox.Show(err.Message, "Error");
             }
+        }
+        static void SendToAX2(string artNr, string orderNr, string lot)
+        {
+            try
+            {
+                string path = Properties.Settings.Default.Ax2FilePath;
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(artNr);
+                        sw.WriteLine(orderNr);
+                        sw.WriteLine(lot);
+                    }
+                }
+                else
+                {
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(artNr);
+                        sw.WriteLine(orderNr);
+                        sw.WriteLine(lot);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+        }
+        static void SendToIntermec1(string artNr, string artNamn, string antal, string orderNr, string lot)
+        {
+            try
+            {
+                string path = Properties.Settings.Default.IntermecFilePath;
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(artNr);
+                        sw.WriteLine(artNamn);
+                        sw.WriteLine(antal);
+                        sw.WriteLine(orderNr);
+                        sw.WriteLine(lot);
+                    }
+                }
+                else
+                {
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(artNr);
+                        sw.WriteLine(artNamn);
+                        sw.WriteLine(antal);
+                        sw.WriteLine(orderNr);
+                        sw.WriteLine(lot);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+        }
+        static void SendToIntermec2(string artNr, string artNamn, string antal, string orderNr, string lot)
+        {
+            try
+            {
+                string path = Properties.Settings.Default.Intermec2FilePath;
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(artNr);
+                        sw.WriteLine(artNamn);
+                        sw.WriteLine(antal);
+                        sw.WriteLine(orderNr);
+                        sw.WriteLine(lot);
+                    }
+                }
+                else
+                {
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(artNr);
+                        sw.WriteLine(artNamn);
+                        sw.WriteLine(antal);
+                        sw.WriteLine(orderNr);
+                        sw.WriteLine(lot);
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+        }
+        static void SendToPLC1(string artNamn, string info7)
+        {
+
         }
     }
 }
