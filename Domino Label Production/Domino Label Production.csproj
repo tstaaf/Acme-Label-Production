@@ -130,6 +130,9 @@
     <Compile Include="UserControls\OrderListaUC.xaml.cs">
       <DependentUpon>OrderListaUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SettingsUC.xaml.cs">
+      <DependentUpon>SettingsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\TillverkningsOrderListaWindow.xaml.cs">
       <DependentUpon>TillverkningsOrderListaWindow.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\OrderListaUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SettingsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

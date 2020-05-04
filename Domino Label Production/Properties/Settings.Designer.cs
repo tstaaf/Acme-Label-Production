@@ -25,7 +25,7 @@ namespace Domino_Label_Production.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.46.56.26")]
         public string MSerieIP {
             get {
                 return ((string)(this["MSerieIP"]));
@@ -49,56 +49,31 @@ namespace Domino_Label_Production.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Ax\\print.txt")]
-        public string AxFilePath {
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\print.txt")]
+        public string QDFilePath {
             get {
-                return ((string)(this["AxFilePath"]));
+                return ((string)(this["QDFilePath"]));
             }
             set {
-                this["AxFilePath"] = value;
+                this["QDFilePath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Ax\\print2.txt")]
-        public string Ax2FilePath {
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\print2.txt")]
+        public string QD2FilePath {
             get {
-                return ((string)(this["Ax2FilePath"]));
+                return ((string)(this["QD2FilePath"]));
             }
             set {
-                this["Ax2FilePath"] = value;
+                this["QD2FilePath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Intermec\\print.txt")]
-        public string IntermecFilePath {
-            get {
-                return ((string)(this["IntermecFilePath"]));
-            }
-            set {
-                this["IntermecFilePath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\Intermec\\print2.txt" +
-            "")]
-        public string Intermec2FilePath {
-            get {
-                return ((string)(this["Intermec2FilePath"]));
-            }
-            set {
-                this["Intermec2FilePath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
         public string PLC1IP {
             get {
                 return ((string)(this["PLC1IP"]));
@@ -110,7 +85,7 @@ namespace Domino_Label_Production.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
         public int PLC1Port {
             get {
                 return ((int)(this["PLC1Port"]));
@@ -141,6 +116,54 @@ namespace Domino_Label_Production.Properties {
             }
             set {
                 this["PLC2Port"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\Watcher")]
+        public string WatchPath {
+            get {
+                return ((string)(this["WatchPath"]));
+            }
+            set {
+                this["WatchPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\Watcher\\Archive\\")]
+        public string WatchArchive {
+            get {
+                return ((string)(this["WatchArchive"]));
+            }
+            set {
+                this["WatchArchive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\Logs\\Maskin1")]
+        public string Maskin1LogPath {
+            get {
+                return ((string)(this["Maskin1LogPath"]));
+            }
+            set {
+                this["Maskin1LogPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\Logs\\Maskin2")]
+        public string Maskin2LogPath {
+            get {
+                return ((string)(this["Maskin2LogPath"]));
+            }
+            set {
+                this["Maskin2LogPath"] = value;
             }
         }
     }

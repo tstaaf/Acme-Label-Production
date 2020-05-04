@@ -1,0 +1,188 @@
+﻿<UserControl x:Class="Domino_Label_Production.UserControls.SettingsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:local="clr-namespace:Domino_Label_Production.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="M-Serie IP" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="0" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="MSerieIP" Text="000.000.000.000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="1" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="PLC 1 IP" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="1" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="PLC1IP" Text="000.000.000.000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="2" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="PLC 1 Port" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="2" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="PLC1Port" Text="0000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="3" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="PLC 2 IP" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="3" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="PLC2IP" Text="000.000.000.000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="4" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="PLC 2 Port" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="4" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="PLC2Port" Text="0000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="6" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="QD Print 1 sökväg:" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="6" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="QD1Path" Text="C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Ax\print.txt" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="7" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="QD Print 2 sökväg:" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="7" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="QD2Path" Text="C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Ax\print2.txt" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="8" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="FileWatch sökväg:" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="8" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="FileWatchPath" Text="C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Intermec\print2.txt" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="9" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="FileWatch arkiv sökväg:" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="9" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="FileWatchArchivePath" Text="C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Intermec\print2.txt" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="10" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Logg Maskin 1 sökväg:" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="10" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="Log1Path" Text="C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Intermec\print2.txt" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="11" Background="#406c85" BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Logg Maskin 2 sökväg:" Foreground="White"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="11" Background="#809dae" BorderThickness="1" BorderBrush="Black" Grid.Column="1">
+            <Viewbox>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="Log2Path" Text="C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\Intermec\print2.txt" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Button Grid.Column="1" Grid.Row="12" Margin="0,5,0,0" HorizontalAlignment="Right" Click="Save_Click">
+            <fa:ImageAwesome Margin="5" Icon="Save" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+        </Button>
+    </Grid>
+</UserControl>

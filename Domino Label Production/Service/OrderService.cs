@@ -15,7 +15,7 @@ namespace Domino_Label_Production.Service
         public void Watch()
         {
             FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = @"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\Watcher";
+            watcher.Path = Properties.Settings.Default.WatchPath;
             watcher.NotifyFilter = NotifyFilters.LastWrite;
             watcher.Filter = "*.txt";
             watcher.Changed += new FileSystemEventHandler(OnChanged);
@@ -60,7 +60,7 @@ namespace Domino_Label_Production.Service
                         ArtikelNummer = lastread[5],
                         ArtikelNamn = lastread[6],
                         RåMaterialNummer = lastread[20],
-                        LotNr = lastread[22]
+                        LotNr = lastread[13]
                     };
 
                     entities.Orders.Add(order);
@@ -102,7 +102,7 @@ namespace Domino_Label_Production.Service
         {
             try
             {
-                File.Move(file, @"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\Watcher\Archive\" + Path.GetFileName(file));
+                File.Move(file, Properties.Settings.Default.WatchArchive + Path.GetFileName(file));
             }
             catch (Exception ex)
             {

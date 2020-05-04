@@ -47,6 +47,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -127,12 +128,20 @@
                 <Border Grid.Row="9" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Till PLC" Foreground="White"/>
+                            <Label x:Name="tillPLCLabel" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="10" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <Label Content="Råmaterial" Foreground="White"/>
                             <TextBox x:Name="rawmatText" Foreground="White" Text="Ange RåmatNr." VerticalAlignment="Center" Background="#406c85"/>
                         </StackPanel>
                     </Viewbox>
                 </Border>
-                <Border Grid.Row="10" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                <Border Grid.Row="11" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                         <Label Content="LOT" Foreground="White"/>
@@ -145,6 +154,7 @@
         <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Margin="10,0,10,0">
             <Grid x:Name="Maskin2Grid">
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -236,12 +246,20 @@
                 <Border Grid.Row="9" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Till PLC" Foreground="White"/>
+                            <Label x:Name="tillPLCLabelM2" Content="-" Foreground="White"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="10" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <Label Content="Råmaterial" Foreground="White"/>
                             <TextBox x:Name="rawmatTextM2" Foreground="White" Text="Ange RåmatNr." VerticalAlignment="Center" Background="#406c85"/>
                         </StackPanel>
                     </Viewbox>
                 </Border>
-                <Border Grid.Row="10" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                <Border Grid.Row="11" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <Label Content="LOT" Foreground="White"/>
