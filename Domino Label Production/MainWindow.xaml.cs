@@ -48,6 +48,7 @@ namespace Domino_Label_Production
             maskinStatusView = false;
 
         }
+
         public void SelectedOrderMaskin1(Orders order)
         {
             maskinStatusUC.orderLabel.Content = order.TillverkningsOrderNummer;
@@ -60,7 +61,10 @@ namespace Domino_Label_Production
             maskinStatusUC.stansLabel.Content = order.Stans;
             maskinStatusUC.diameterLabel.Content = order.Diameter;
             maskinStatusUC.tillPLCLabel.Content = FormatPLC(order.ArtikelNamn, order.LotNr);
+            maskinStatusUC.rawmatText.Text = order.RåMaterialNummer;
+            maskinStatusUC.LOTLabel.Content = FormatLOT("1");
         }
+
         public void SelectedOrderMaskin2(Orders order)
         {
             maskinStatusUC.orderLabelM2.Content = order.TillverkningsOrderNummer;
@@ -73,7 +77,10 @@ namespace Domino_Label_Production
             maskinStatusUC.stansLabelM2.Content = order.Stans;
             maskinStatusUC.diameterLabelM2.Content = order.Diameter;
             maskinStatusUC.tillPLCLabelM2.Content = FormatPLC(order.ArtikelNamn, order.LotNr);
+            maskinStatusUC.rawmatTextM2.Text = order.RåMaterialNummer;
+            maskinStatusUC.LOTLabelM2.Content = FormatLOT("2");
         }
+
         private string FormatPLC(string artNamn, string LOT)
         {
             var split = artNamn.Split((char)32);
@@ -85,6 +92,17 @@ namespace Domino_Label_Production
             return LOTFinal + splitFinal;
 
         }
+
+        private string FormatLOT(string maskinNr)
+        {
+            DateTime date = new DateTime();
+            date = DateTime.Now;
+            string lotYY = date.ToString("yy");
+            string lotDDD = date.DayOfYear.ToString("000");
+            string lotR = "-1";
+            return maskinNr + lotYY + lotDDD + lotR;
+        }
+
         private void Avsluta_Click(object sender, RoutedEventArgs e)
         {
             var result = MessageBox.Show("Vill du avsluta programmet?", "Avsluta", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
@@ -99,6 +117,7 @@ namespace Domino_Label_Production
                     break;
             }   
         }
+
         private void Minimera_Click(object sender, RoutedEventArgs e)
         {
             
@@ -112,69 +131,84 @@ namespace Domino_Label_Production
                 WindowState = WindowState.Minimized;
             }
         }
+
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             MainView.Content = settingsUC;
             maskinStatusView = false;
         }
+
         private void Ladda_Click(object sender, RoutedEventArgs e)
         {
             var result = CustomMessageBox.ShowYesNoCancel("Välj maskin att skicka order till:", "Skicka Order", "Maskin 1", "Maskin 2", "Avbryt", MessageBoxImage.Information);
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    SendToMSerie(maskinStatusUC.artnrLabel.Content.ToString(), 
+                    SendToMSerie(1, maskinStatusUC.artnrLabel.Content.ToString(), 
                         maskinStatusUC.artnamnLabel.Content.ToString(),
                         maskinStatusUC.antalLabel.Content.ToString(),
-                        maskinStatusUC.LOTText.Text.ToString(),
+                        maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString(),
                         maskinStatusUC.orderLabel.Content.ToString());
-                    SendToQD1(maskinStatusUC.artnrLabel.Content.ToString(),
+                    SendToQD(1, maskinStatusUC.artnrLabel.Content.ToString(),
                         maskinStatusUC.artnamnLabel.Content.ToString(),
                         maskinStatusUC.antalLabel.Content.ToString(),
                         maskinStatusUC.orderLabel.Content.ToString(),
-                        maskinStatusUC.LOTText.Text.ToString());
+                        maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString());
                     SendToPLC1(maskinStatusUC.tillPLCLabel.Content.ToString());
+                    SendToAx(1, maskinStatusUC.orderLabel.Content.ToString(), maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString());
                     break;
                 case MessageBoxResult.No:
-                    SendToMSerie2(maskinStatusUC.artnrLabelM2.Content.ToString(),
+                    SendToMSerie(2, maskinStatusUC.artnrLabelM2.Content.ToString(),
                         maskinStatusUC.artnamnLabelM2.Content.ToString(),
                         maskinStatusUC.antalLabelM2.Content.ToString(),
-                        maskinStatusUC.LOTTextM2.Text.ToString(),
+                        maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString(),
                         maskinStatusUC.orderLabelM2.Content.ToString());
-                    SendToQD2(maskinStatusUC.artnrLabelM2.Content.ToString(),
+                    SendToQD(2, maskinStatusUC.artnrLabelM2.Content.ToString(),
                         maskinStatusUC.artnamnLabelM2.Content.ToString(),
                         maskinStatusUC.antalLabelM2.Content.ToString(),
-                        maskinStatusUC.LOTTextM2.Text.ToString(),
-                        maskinStatusUC.orderLabelM2.Content.ToString());
+                        maskinStatusUC.orderLabelM2.Content.ToString(),
+                        maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString());
                     SendToPLC2(maskinStatusUC.tillPLCLabelM2.Content.ToString());
+                    SendToAx(2, maskinStatusUC.orderLabelM2.Content.ToString(), maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString());
                     break;
                 default:
                     break;
             }
         }
+
         private void AvslutaOrder_Click(object sender, RoutedEventArgs e)
         {
             var result = CustomMessageBox.ShowYesNoCancel("Välj maskin att avsluta order på:", "Avsluta Order", "Maskin 1", "Maskin 2", "Avbryt", MessageBoxImage.Information);
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    AvslutaOrder1(maskinStatusUC.artnrLabel.Content.ToString(), maskinStatusUC.LOTText.Text.ToString(), maskinStatusUC.orderLabel.Content.ToString());
+                    AvslutaOrder1(maskinStatusUC.artnrLabel.Content.ToString(), maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString(), maskinStatusUC.orderLabel.Content.ToString());
                     break;
                 case MessageBoxResult.No:
-                    AvslutaOrder2(maskinStatusUC.artnrLabelM2.Content.ToString(), maskinStatusUC.LOTTextM2.Text.ToString(), maskinStatusUC.orderLabelM2.Content.ToString());
+                    AvslutaOrder2(maskinStatusUC.artnrLabelM2.Content.ToString(), maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString(), maskinStatusUC.orderLabelM2.Content.ToString());
                     break;
                 default:
                     break;
             }
         }
-        static void SendToMSerie(string artNr, string artNamn, string antal, string lot, string orderNr)
+
+        static void SendToMSerie(int maskin, string artNr, string artNamn, string antal, string lot, string orderNr)
         {
             try
             {
+                string sendString1 = string.Empty;
+                if (maskin == 1)
+                {
+                    sendString1 = (char)2 + "019E1??" + (char)13;
+                }
+                else if (maskin == 2)
+                {
+                    sendString1 = (char)2 + "019E2??" + (char)13;
+                }
                 string MserieIP = Properties.Settings.Default.MSerieIP;
                 int MSeriePort = Properties.Settings.Default.MSeriePort;
                 TcpClient client = new TcpClient(MserieIP, MSeriePort);
-                string sendString1 = (char)2 + "019E1??" + (char)13;
+                
                 string sendString2 = (char)2 + "02C??" + (char)13;
                 string message = (char)2 + "00D" + artNr + (char)10 + artNamn + (char)10 + antal + (char)10 + lot + (char)10 + orderNr + "??" + (char)13;
 
@@ -202,52 +236,63 @@ namespace Domino_Label_Production
             }
             catch(Exception err)
             {
-                MessageBox.Show(err.Message, "Fel", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Fel vid utskick till M-Serie: " + (char)10 + err.Message, "Fel M-Serie", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        static void SendToMSerie2(string artNr, string artNamn, string antal, string lot, string orderNr)
+
+        static void SendToAx(int maskin, string orderNr, string lot)
         {
             try
             {
-                string MserieIP = Properties.Settings.Default.MSerieIP;
-                int MSeriePort = Properties.Settings.Default.MSeriePort;
-                TcpClient client = new TcpClient(MserieIP, MSeriePort);
-                string sendString1 = (char)2 + "019E2??" + (char)13;
-                string sendString2 = (char)2 + "02C??" + (char)13;
-                string message = (char)2 + "00D" + artNr + (char)10 + artNamn + (char)10 + antal + (char)10 + lot + (char)10 + orderNr + "??" + (char)13;
+                string IP = "0";
+                if(maskin == 1) 
+                {
+                    IP = "127.0.0.1";
+                }
+                else if(maskin == 2)
+                {
+                    IP = "127.0.0.1";
+                }
+                
+                int Port = 7000;
+                TcpClient client = new TcpClient(IP, Port);
+                string message = (char)27 + "OQ001" + orderNr + (char)27 + "r" + lot + (char)4;
 
-                byte[] data = Encoding.ASCII.GetBytes(sendString1);
-                byte[] data2 = Encoding.ASCII.GetBytes(sendString2);
-                byte[] dataMessage = Encoding.ASCII.GetBytes(message);
+                byte[] data = Encoding.ASCII.GetBytes(message);
 
                 NetworkStream stream = client.GetStream();
                 stream.Write(data, 0, data.Length);
-                stream.Write(data2, 0, data2.Length);
-                stream.Write(dataMessage, 0, dataMessage.Length);
-                Console.WriteLine("Sent: {0}", sendString1);
-                Console.WriteLine("Sent: {0}", sendString2);
                 Console.WriteLine("Sent: {0}", message);
 
                 data = new byte[256];
                 string response = string.Empty;
-
                 int bytes = stream.Read(data, 0, data.Length);
                 response = Encoding.ASCII.GetString(data, 0, bytes);
+
                 Console.WriteLine("Recieved: {0}", response);
 
                 stream.Close();
                 client.Close();
             }
-            catch (Exception err)
+            catch(Exception err)
             {
-                MessageBox.Show(err.Message, "Error");
+                MessageBox.Show("Fel vid utskick till Ax: " + (char)10 + err.Message, "Fel Ax");
             }
         }
-        static void SendToQD1(string artNr, string artNamn, string antal, string orderNr, string lot)
+
+        static void SendToQD(int maskin, string artNr, string artNamn, string antal, string orderNr, string lot)
         {
             try
             {
-                string path = Properties.Settings.Default.QDFilePath;
+                string path = string.Empty;
+                if(maskin == 1)
+                {
+                    path = Properties.Settings.Default.QDFilePath + "print1.txt";
+                }
+                else if(maskin == 2)
+                {
+                    path = Properties.Settings.Default.QDFilePath + "print2.txt";
+                }
                 if (File.Exists(path))
                 {
                     File.Delete(path);
@@ -277,40 +322,7 @@ namespace Domino_Label_Production
                 MessageBox.Show(err.Message, "Error");
             }
         }
-        static void SendToQD2(string artNr, string artNamn, string antal, string orderNr, string lot)
-        {
-            try
-            {
-                string path = Properties.Settings.Default.QD2FilePath;
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-                    using (StreamWriter sw = File.CreateText(path))
-                    {
-                        sw.WriteLine(artNr);
-                        sw.WriteLine(artNamn);
-                        sw.WriteLine(antal);
-                        sw.WriteLine(orderNr);
-                        sw.WriteLine(lot);
-                    }
-                }
-                else
-                {
-                    using (StreamWriter sw = File.CreateText(path))
-                    {
-                        sw.WriteLine(artNr);
-                        sw.WriteLine(artNamn);
-                        sw.WriteLine(antal);
-                        sw.WriteLine(orderNr);
-                        sw.WriteLine(lot);
-                    }
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Error");
-            }
-        }
+
         static void SendToPLC1(string toPLC)
         {
             try
@@ -337,9 +349,10 @@ namespace Domino_Label_Production
             }
             catch(Exception err)
             {
-                MessageBox.Show(err.Message, "Fel",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Fel vid utskick till PLC: " + (char)10 + err.Message, "Fel PLC1", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         static void SendToPLC2(string toPLC)
         {
             try
@@ -366,55 +379,75 @@ namespace Domino_Label_Production
             }
             catch(Exception err)
             {
-                MessageBox.Show(err.Message, "Fel", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Fel vid utskick till PLC: " + (char)10 + err.Message, "Fel PLC2", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         public void AvslutaOrder1(string artNr, string lot, string orderNr)
         {
-            using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin1LogPath + "LoggMaskin1.txt"))
+            try
             {
-                w.Write("\r\nAvslutad Order : ");
-                w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
-                w.WriteLine($"{orderNr} | {artNr} | {lot}");
-                w.WriteLine("---------------------------------");
-            };
+                using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin1LogPath + "LoggMaskin1.txt"))
+                {
+                    w.Write("\r\nAvslutad Order : ");
+                    w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
+                    w.WriteLine($"{orderNr} | {artNr} | {lot}");
+                    w.WriteLine("---------------------------------");
+                };
 
-            maskinStatusUC.orderLabel.Content = "-";
-            maskinStatusUC.kundLabel.Content = "-";
-            maskinStatusUC.datumLabel.Content = "-";
-            maskinStatusUC.artnrLabel.Content = "-";
-            maskinStatusUC.artnamnLabel.Content = "-";
-            maskinStatusUC.antalLabel.Content = "-";
-            maskinStatusUC.cylinderLabel.Content = "-";
-            maskinStatusUC.stansLabel.Content = "-";
-            maskinStatusUC.diameterLabel.Content = "-";
-            maskinStatusUC.tillPLCLabel.Content = "-";
-            maskinStatusUC.rawmatText.Text = "-";
-            maskinStatusUC.LOTText.Text = "-";
+                maskinStatusUC.orderLabel.Content = "-";
+                maskinStatusUC.kundLabel.Content = "-";
+                maskinStatusUC.datumLabel.Content = "-";
+                maskinStatusUC.artnrLabel.Content = "-";
+                maskinStatusUC.artnamnLabel.Content = "-";
+                maskinStatusUC.antalLabel.Content = "-";
+                maskinStatusUC.cylinderLabel.Content = "-";
+                maskinStatusUC.stansLabel.Content = "-";
+                maskinStatusUC.diameterLabel.Content = "-";
+                maskinStatusUC.tillPLCLabel.Content = "-";
+                maskinStatusUC.rawmatText.Text = "-";
+                maskinStatusUC.LOTLabel.Content = "-";
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
+
         public void AvslutaOrder2(string artNr, string lot, string orderNr)
         {
-            using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin2LogPath + "LoggMaskin2.txt"))
+            try
             {
-                w.Write("\r\nAvslutad Order : ");
-                w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
-                w.WriteLine($"{orderNr} | {artNr} | {lot}");
-                w.WriteLine("---------------------------------");
-            }
+                using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin2LogPath + "LoggMaskin2.txt"))
+                {
+                    w.Write("\r\nAvslutad Order : ");
+                    w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
+                    w.WriteLine($"{orderNr} | {artNr} | {lot}");
+                    w.WriteLine("---------------------------------");
+                }
 
-            maskinStatusUC.orderLabelM2.Content = "-";
-            maskinStatusUC.kundLabelM2.Content = "-";
-            maskinStatusUC.datumLabelM2.Content = "-";
-            maskinStatusUC.artnrLabelM2.Content = "-";
-            maskinStatusUC.artnamnLabelM2.Content = "-";
-            maskinStatusUC.antalLabelM2.Content = "-";
-            maskinStatusUC.cylinderLabelM2.Content = "-";
-            maskinStatusUC.stansLabelM2.Content = "-";
-            maskinStatusUC.diameterLabelM2.Content = "-";
-            maskinStatusUC.tillPLCLabelM2.Content = "-";
-            maskinStatusUC.rawmatTextM2.Text = "-";
-            maskinStatusUC.LOTTextM2.Text = "-";
+                maskinStatusUC.orderLabelM2.Content = "-";
+                maskinStatusUC.kundLabelM2.Content = "-";
+                maskinStatusUC.datumLabelM2.Content = "-";
+                maskinStatusUC.artnrLabelM2.Content = "-";
+                maskinStatusUC.artnamnLabelM2.Content = "-";
+                maskinStatusUC.antalLabelM2.Content = "-";
+                maskinStatusUC.cylinderLabelM2.Content = "-";
+                maskinStatusUC.stansLabelM2.Content = "-";
+                maskinStatusUC.diameterLabelM2.Content = "-";
+                maskinStatusUC.tillPLCLabelM2.Content = "-";
+                maskinStatusUC.rawmatTextM2.Text = "-";
+                maskinStatusUC.LOTLabelM2.Content = "-";
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
-        
+
+        private void ÄndraOrder1(object sender, RoutedEventArgs e)
+        {
+            SendToAx(1, maskinStatusUC.orderLabel.Content.ToString(), maskinStatusUC.LOTLabel.Content.ToString());
+        }
     }
 }

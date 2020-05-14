@@ -25,11 +25,8 @@ namespace Domino_Label_Production.UserControls
             InitializeComponent();
             MSerieIP.Text = Properties.Settings.Default.MSerieIP;
             PLC1IP.Text = Properties.Settings.Default.PLC1IP;
-            PLC1Port.Text = Properties.Settings.Default.PLC1Port.ToString();
             PLC2IP.Text = Properties.Settings.Default.PLC2IP;
-            PLC2Port.Text = Properties.Settings.Default.PLC2Port.ToString();
-            QD1Path.Text = Properties.Settings.Default.QDFilePath;
-            QD2Path.Text = Properties.Settings.Default.QD2FilePath;
+            QDFilePath.Text = Properties.Settings.Default.QDFilePath;
             FileWatchPath.Text = Properties.Settings.Default.WatchPath;
             FileWatchArchivePath.Text = Properties.Settings.Default.WatchArchive;
             Log1Path.Text = Properties.Settings.Default.Maskin1LogPath;
@@ -40,11 +37,8 @@ namespace Domino_Label_Production.UserControls
         {
             Properties.Settings.Default.MSerieIP = MSerieIP.Text;
             Properties.Settings.Default.PLC1IP = PLC1IP.Text;
-            Properties.Settings.Default.PLC1Port = Int32.Parse(PLC1Port.Text);
             Properties.Settings.Default.PLC2IP = PLC2IP.Text;
-            Properties.Settings.Default.PLC2Port = Int32.Parse(PLC2Port.Text);
-            Properties.Settings.Default.QDFilePath = QD1Path.Text;
-            Properties.Settings.Default.QD2FilePath = QD2Path.Text;
+            Properties.Settings.Default.QDFilePath = QDFilePath.Text;
             Properties.Settings.Default.WatchPath = FileWatchPath.Text;
             Properties.Settings.Default.WatchArchive = FileWatchArchivePath.Text;
             Properties.Settings.Default.Maskin1LogPath = Log1Path.Text;

@@ -51,6 +51,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Domino-logo-ikon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper, Version=13.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
@@ -214,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Bilder\Domino-logo-800px.jpg" />
+    <Resource Include="Domino-logo-ikon.ico" />
     <Content Include="Domino_Label_Production.OrderContext.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

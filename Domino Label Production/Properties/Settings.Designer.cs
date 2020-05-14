@@ -49,25 +49,13 @@ namespace Domino_Label_Production.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\print.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\")]
         public string QDFilePath {
             get {
                 return ((string)(this["QDFilePath"]));
             }
             set {
                 this["QDFilePath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\timmy.staaf\\Desktop\\Misc\\EtikettProduktion\\PrintRead\\print2.txt")]
-        public string QD2FilePath {
-            get {
-                return ((string)(this["QD2FilePath"]));
-            }
-            set {
-                this["QD2FilePath"] = value;
             }
         }
         

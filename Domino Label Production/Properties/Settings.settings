@@ -9,10 +9,7 @@
       <Value Profile="(Default)">9100</Value>
     </Setting>
     <Setting Name="QDFilePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\print.txt</Value>
-    </Setting>
-    <Setting Name="QD2FilePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\print2.txt</Value>
+      <Value Profile="(Default)">C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\PrintRead\</Value>
     </Setting>
     <Setting Name="PLC1IP" Type="System.String" Scope="User">
       <Value Profile="(Default)">127.0.0.1</Value>

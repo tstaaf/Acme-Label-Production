@@ -11,7 +11,10 @@
     <UserControl.Resources>
         <CollectionViewSource x:Key="ordersViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:Orders}, CreateList=True}"/>
     </UserControl.Resources>
-    <Grid DataContext="{StaticResource ordersViewSource}">
+    <Grid DataContext="{StaticResource ordersViewSource}" UseLayoutRounding="True">
+        <Grid.Effect>
+            <DropShadowEffect Color="Black" Opacity="0.50" BlurRadius="4" RenderingBias="Quality" ShadowDepth="3"/>
+        </Grid.Effect>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>
@@ -21,10 +24,10 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Margin="10,5,5,5" HorizontalAlignment="Right" Click="RefreshList_Click">
+        <Button Grid.Column="0" Margin="10,5,5,5" HorizontalAlignment="Right" Click="RefreshList_Click" Background="#009639">
             <fa:ImageAwesome Margin="5" Icon="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
         </Button>
-        <Button Grid.Column="1" Margin="80,5,80,5" Click="SkickaTillMaskin1_Click">
+        <Button Grid.Column="1" Margin="80,5,80,5" Click="SkickaTillMaskin1_Click" Background="#009639">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -39,7 +42,7 @@
                 </Viewbox>
             </Grid>
         </Button>
-        <Button Grid.Column="2" Margin="80,5,80,5" Click="SkickaTillMaskin2_Click">
+        <Button Grid.Column="2" Margin="80,5,80,5" Click="SkickaTillMaskin2_Click" Background="#009639">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>

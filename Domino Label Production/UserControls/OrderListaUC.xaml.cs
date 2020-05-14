@@ -48,40 +48,56 @@ namespace Domino_Label_Production.UserControls
         private void SkickaTillMaskin1_Click(object sender, RoutedEventArgs e)
         {
             Orders order = (Orders)ordersDataGrid.SelectedItem;
-            MessageBoxResult result = MessageBox.Show("Är du säker på att du vill skicka order: " + order.TillverkningsOrderNummer + " till maskin 1?", "Bekräfta order", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            switch (result)
+            try
             {
-                case MessageBoxResult.Yes:
-                    ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin1(order);
-                    context.Orders.Remove(order);
-                    context.SaveChanges();
-                    break;
-                case MessageBoxResult.No:
-                    break;
+                MessageBoxResult result = MessageBox.Show("Är du säker på att du vill skicka order: " + order.TillverkningsOrderNummer + " till maskin 1?", "Bekräfta order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin1(order);
+                        context.Orders.Remove(order);
+                        context.SaveChanges();
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                }
+                context.Orders.Load();
+
+                ordersViewSource.Source = context.Orders.Local;
             }
-            context.Orders.Load();
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Välj en order");
+            }
             
-            ordersViewSource.Source = context.Orders.Local;
 
         }
 
         private void SkickaTillMaskin2_Click(object sender, RoutedEventArgs e)
         {
             Orders order = (Orders)ordersDataGrid.SelectedItem;
-            MessageBoxResult result = MessageBox.Show("Är du säker på att du vill skicka order: " + order.TillverkningsOrderNummer + " till maskin 2?", "Bekräfta order", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            switch (result)
+            try
             {
-                case MessageBoxResult.Yes:
-                    ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin2(order);
-                    context.Orders.Remove(order);
-                    context.SaveChanges();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
-            context.Orders.Load();
+                MessageBoxResult result = MessageBox.Show("Är du säker på att du vill skicka order: " + order.TillverkningsOrderNummer + " till maskin 2?", "Bekräfta order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        ((MainWindow)Application.Current.MainWindow).SelectedOrderMaskin2(order);
+                        context.Orders.Remove(order);
+                        context.SaveChanges();
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                }
+                context.Orders.Load();
 
-            ordersViewSource.Source = context.Orders.Local;
+                ordersViewSource.Source = context.Orders.Local;
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Välj en order");
+            }
+            
         }
     }
 }

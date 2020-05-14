@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System;
 using System.Windows;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace Domino_Label_Production.Service
 {
@@ -47,10 +48,15 @@ namespace Domino_Label_Production.Service
                         string output = l.Split(';').Last();
                         lastread.Add(output);
                     }
+                    lastread[7] = lastread[7].Split(':').Last();
+                    lastread[8] = lastread[8].Split(':').Last();
+                    lastread[7] = lastread[7].Trim();
+                    lastread[8] = lastread[8].Trim();
+                    string antalRullar = Regex.Match(lastread[13], @"\d+").Value;
 
                     Orders order = new Orders
                     {
-                        TillverkningsOrderNummer = lastread[17],
+                        TillverkningsOrderNummer = lastread[1],
                         KundNummer = lastread[15],
                         Leveransdatum = lastread[2],
                         AntalRulle = lastread[3],
@@ -60,7 +66,7 @@ namespace Domino_Label_Production.Service
                         ArtikelNummer = lastread[5],
                         ArtikelNamn = lastread[6],
                         RåMaterialNummer = lastread[20],
-                        LotNr = lastread[13]
+                        LotNr = antalRullar
                     };
 
                     entities.Orders.Add(order);

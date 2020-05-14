@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Domino Label Production" Height="600" Width="1200">
     <!--Main Grid-->
-    <Grid ShowGridLines="False">
+    <Grid ShowGridLines="False" UseLayoutRounding="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -25,7 +25,7 @@
         <!--End main grid-->
         
         <!--Upper menu-->
-        <Button Grid.Column="0" Grid.Row="0" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="TillverkningsOrderLista_Click">
+        <Button Grid.Column="0" Grid.Row="0" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="TillverkningsOrderLista_Click" Background="#009639">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -40,7 +40,7 @@
                 </Viewbox>
             </Grid>
         </Button>
-        <Button Grid.Column="1" Grid.Row="0" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Minimera_Click">
+        <Button Grid.Column="1" Grid.Row="0" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Minimera_Click" Background="#009639">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -55,7 +55,7 @@
                 </Viewbox>
             </Grid>
         </Button>
-        <Button Grid.Column="2" Grid.Row="0" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Avsluta_Click">
+        <Button Grid.Column="2" Grid.Row="0" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Avsluta_Click" Background="#009639">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -74,7 +74,7 @@
         <!--End upper menu-->
         
         <!--Rightmost menu -->
-        <Button Grid.Column="3" Grid.Row="1" Margin="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Ladda_Click">
+        <Button Grid.Column="3" Grid.Row="1" Margin="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Ladda_Click" Background="#009639">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -89,7 +89,7 @@
                 </Viewbox>
             </Grid>
         </Button>
-        <Button Grid.Column="3" Grid.Row="2" Margin="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+        <Button Grid.Column="3" Grid.Row="2" Margin="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Background="#009639" Click="ÄndraOrder1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -104,7 +104,7 @@
                 </Viewbox>
             </Grid>
         </Button>
-        <Button Grid.Column="3" Grid.Row="3" Margin="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="AvslutaOrder_Click">
+        <Button Grid.Column="3" Grid.Row="3" Margin="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="AvslutaOrder_Click" Background="#009639">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -119,7 +119,7 @@
                 </Viewbox>
             </Grid>
         </Button>
-        <Button Grid.Column="3" Grid.Row="4" Margin="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Settings_Click">
+        <Button Grid.Column="3" Grid.Row="4" Margin="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Click="Settings_Click" Background="#009639">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

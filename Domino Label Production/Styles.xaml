@@ -2,20 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Domino_Label_Production">
     <Style TargetType="Button">
-        <Setter Property="Background">
+        <!--<Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush>
-                    <GradientStop Color="#009639" Offset="1"/>
-                    <GradientStop Color="#40b06b" Offset="1"/>
-                </LinearGradientBrush>
+                <SolidColorBrush Color="#009639"/>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
+        <Setter Property="Content" Value="Clear"/>
         <Setter Property="Effect">
             <Setter.Value>
-                <DropShadowEffect BlurRadius="2" RenderingBias="Quality" ShadowDepth="1"/>
+                <DropShadowEffect Color="Black" Opacity="0.50" BlurRadius="4" RenderingBias="Quality" ShadowDepth="3"/>
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="Foreground" Value="White"/>
+        
     </Style>
 </ResourceDictionary>
