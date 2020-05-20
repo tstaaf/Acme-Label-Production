@@ -19,6 +19,8 @@ using Domino_Label_Production.Windows;
 using System.Net.Sockets;
 using System.IO;
 using WPFCustomMessageBox;
+using System.Net;
+using System.Threading;
 
 namespace Domino_Label_Production
 {
@@ -27,6 +29,8 @@ namespace Domino_Label_Production
     /// </summary>
     public partial class MainWindow : Window
     {
+        int lotRM1;
+        int lotRM2;
         OrderService service = new OrderService();
         MaskinStatus maskinStatusUC = new MaskinStatus();
         OrderListaUC orderListaUC = new OrderListaUC();
@@ -37,6 +41,11 @@ namespace Domino_Label_Production
             InitializeComponent();
             MainView.Content = maskinStatusUC;
             maskinStatusView = true;
+            
+            //Thread listener = new Thread(new ThreadStart(ScannerListen));
+            //listener.IsBackground = true;
+            //listener.Start();
+            
             service.Watch();
         }
 
@@ -62,7 +71,7 @@ namespace Domino_Label_Production
             maskinStatusUC.diameterLabel.Content = order.Diameter;
             maskinStatusUC.tillPLCLabel.Content = FormatPLC(order.ArtikelNamn, order.LotNr);
             maskinStatusUC.rawmatText.Text = order.RåMaterialNummer;
-            maskinStatusUC.LOTLabel.Content = FormatLOT("1");
+            maskinStatusUC.LOTLabel.Content = FormatLOT(1, true);
         }
 
         public void SelectedOrderMaskin2(Orders order)
@@ -78,7 +87,7 @@ namespace Domino_Label_Production
             maskinStatusUC.diameterLabelM2.Content = order.Diameter;
             maskinStatusUC.tillPLCLabelM2.Content = FormatPLC(order.ArtikelNamn, order.LotNr);
             maskinStatusUC.rawmatTextM2.Text = order.RåMaterialNummer;
-            maskinStatusUC.LOTLabelM2.Content = FormatLOT("2");
+            maskinStatusUC.LOTLabelM2.Content = FormatLOT(2, true);
         }
 
         private string FormatPLC(string artNamn, string LOT)
@@ -93,14 +102,154 @@ namespace Domino_Label_Production
 
         }
 
-        private string FormatLOT(string maskinNr)
+        private string FormatLOT(int maskin, bool newOrder)
         {
             DateTime date = new DateTime();
             date = DateTime.Now;
             string lotYY = date.ToString("yy");
-            string lotDDD = date.DayOfYear.ToString("000");
-            string lotR = "-1";
-            return maskinNr + lotYY + lotDDD + lotR;
+            string lotDDD = date.DayOfYear.ToString("000") + "-";
+
+            if (maskin == 1)
+            {
+                if (newOrder)
+                {
+                    lotRM1 = 1;
+                    return maskin.ToString() + lotYY + lotDDD + lotRM1.ToString();
+                }
+                else
+                {
+                    lotRM1 += 1;
+                    return maskin.ToString() + lotYY + lotDDD + lotRM1.ToString();
+                }
+            }
+            else
+            {
+                if (newOrder)
+                {
+                    lotRM2 = 1;
+                    return maskin.ToString() + lotYY + lotDDD + lotRM2.ToString();
+                }
+                else
+                {
+                    lotRM2 += 1;
+                    return maskin.ToString() + lotYY + lotDDD + lotRM2.ToString();
+                }
+            }          
+        }
+
+        //private void ScannerListen(int maskin)
+        //{
+        //    try
+        //    {
+        //        int port = 13000;
+        //        IPAddress localAddress = IPAddress.Parse("127.0.0.1");
+
+        //        server = new TcpListener(localAddress, port);
+        //        server.Start();
+
+        //        byte[] bytes = new byte[256];
+        //        string data = null;
+
+        //        Console.WriteLine("Waiting for scan..");
+
+        //        TcpClient client = server.AcceptTcpClient();
+        //        Console.WriteLine("Scanner connected.");
+
+        //        data = null;
+        //        NetworkStream stream = client.GetStream();
+        //        int i;
+        //        i = stream.Read(bytes, 0, bytes.Length);
+        //        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+        //        Console.WriteLine("Recieved scan: {0}", data);
+        //        if (maskin == 1)
+        //        {
+        //            maskinStatusUC.rawmatLOT.Content = data;
+        //        }
+        //        else if (maskin == 2)
+        //        {
+        //            maskinStatusUC.rawmatLOTM2.Content = data;
+        //        }
+        //        data = data.ToUpper();
+
+        //        byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
+
+        //        stream.Write(msg, 0, msg.Length);
+        //        Console.WriteLine("Sent: {0}", data);
+        //        client.Close();
+        //        server.Stop();
+        //        //while (true)
+        //        //{
+                    
+        //        //    while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
+        //        //    {
+        //        //        data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
+        //        //        Console.WriteLine("Recieved scan: {0}", data);
+        //        //        if (maskin == 1)
+        //        //        {
+        //        //            maskinStatusUC.rawmatLOT.Content = data;
+        //        //        }
+        //        //        else if (maskin == 2)
+        //        //        {
+        //        //            maskinStatusUC.rawmatLOTM2.Content = data;
+        //        //        }
+        //        //        data = data.ToUpper();
+
+        //        //        byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
+
+        //        //        stream.Write(msg, 0, msg.Length);
+        //        //        Console.WriteLine("Sent: {0}", data);
+        //        //        server.Stop();
+        //        //    }
+        //        //    client.Close();
+        //        //}
+        //    }
+        //    catch(SocketException err)
+        //    {
+        //        MessageBox.Show("Fel med scanner." + (char)10 + err.Message, "Fel med scanner.");
+        //    }
+        //    finally
+        //    {
+        //        server.Stop();
+        //    }
+        //}
+        private void ScannerConnect(int maskin)
+        {
+            try
+            {
+                string IP = "192.168.187.31";
+                int Port = 51000;
+                TcpClient client = new TcpClient(IP, Port);
+
+                NetworkStream stream = client.GetStream();
+                Console.WriteLine("Waiting for scan..");
+
+                byte[] data = new byte[256];
+                string response = string.Empty;
+                int bytes = stream.Read(data, 0, data.Length);
+                response = Encoding.ASCII.GetString(data, 0, bytes);
+                if(response.Contains("Welcome"))
+                {
+                    bytes = stream.Read(data, 0, data.Length);
+                    response = Encoding.ASCII.GetString(data, 0, bytes);
+                }
+                if (maskin == 1)
+                {
+                    maskinStatusUC.rawmatLOT.Content = response;
+                }
+                else if (maskin == 2)
+                {
+                    maskinStatusUC.rawmatLOTM2.Content = response;
+                }
+
+                Console.WriteLine("Recieved: {0}", response);
+
+                stream.Close();
+                client.Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Fel med scanner: " + (char)10 + err.Message, "Fel Scanner");
+            }
         }
 
         private void Avsluta_Click(object sender, RoutedEventArgs e)
@@ -144,6 +293,7 @@ namespace Domino_Label_Production
             switch (result)
             {
                 case MessageBoxResult.Yes:
+                    ScannerConnect(1);
                     SendToMSerie(1, maskinStatusUC.artnrLabel.Content.ToString(), 
                         maskinStatusUC.artnamnLabel.Content.ToString(),
                         maskinStatusUC.antalLabel.Content.ToString(),
@@ -158,6 +308,7 @@ namespace Domino_Label_Production
                     SendToAx(1, maskinStatusUC.orderLabel.Content.ToString(), maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString());
                     break;
                 case MessageBoxResult.No:
+                    ScannerConnect(2);
                     SendToMSerie(2, maskinStatusUC.artnrLabelM2.Content.ToString(),
                         maskinStatusUC.artnamnLabelM2.Content.ToString(),
                         maskinStatusUC.antalLabelM2.Content.ToString(),
@@ -445,9 +596,25 @@ namespace Domino_Label_Production
             }
         }
 
-        private void ÄndraOrder1(object sender, RoutedEventArgs e)
+        private void ÄndraOrder_Click(object sender, RoutedEventArgs e)
         {
-            SendToAx(1, maskinStatusUC.orderLabel.Content.ToString(), maskinStatusUC.LOTLabel.Content.ToString());
+            var result = CustomMessageBox.ShowYesNoCancel("Välj maskin att ändra order på:", "Ändra Order", "Maskin 1", "Maskin 2", "Avbryt", MessageBoxImage.Information);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    ScannerConnect(1);
+                    maskinStatusUC.LOTLabel.Content = FormatLOT(1, false);
+                    SendToAx(1, maskinStatusUC.orderLabel.Content.ToString(), maskinStatusUC.LOTLabel.Content.ToString());
+                    break;
+                case MessageBoxResult.No:
+                    ScannerConnect(2);
+                    maskinStatusUC.LOTLabelM2.Content = FormatLOT(2, false);
+                    SendToAx(2, maskinStatusUC.orderLabelM2.Content.ToString(), maskinStatusUC.LOTLabelM2.Content.ToString());
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
 }

@@ -30,70 +30,70 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="0" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="M-Serie IP" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="0" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.Column="1" Grid.ColumnSpan="1">
+        <Border Grid.Row="0" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.Column="1" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="MSerieIP" Text="000.000.000.000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="1" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="1" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="Ax IP" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="1" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.Column="1" Grid.ColumnSpan="1">
+        <Border Grid.Row="1" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.Column="1" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="AxIP" Text="000.000.000.000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="0" Grid.Column="2" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="0" Grid.Column="2" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="PLC 1 IP" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="0" Grid.Column="4" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="0" Grid.Column="4" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="PLC1IP" Text="000.000.000.000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="1" Grid.Column="2" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="1" Grid.Column="2" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="PLC 2 IP" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="1" Grid.Column="4" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="1" Grid.Column="4" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="PLC2IP" Text="000.000.000.000" Foreground="White" VerticalAlignment="Center" Background="#809dae"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="4" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="4" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="QD Print sökväg:" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="4" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.Column="1" Grid.ColumnSpan="3">
+        <Border Grid.Row="4" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.Column="1" Grid.ColumnSpan="3">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="QDFilePath" Text="-" Foreground="White" VerticalAlignment="Center" Background="#809dae" Margin="2"/>
@@ -114,56 +114,56 @@
                 </StackPanel>
             </Viewbox>
         </Border>-->
-        <Border Grid.Row="5" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="5" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="FileWatch sökväg:" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="5" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.Column="1" Grid.ColumnSpan="3">
+        <Border Grid.Row="5" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.Column="1" Grid.ColumnSpan="3">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="FileWatchPath" Text="-" Foreground="White" VerticalAlignment="Center" Background="#809dae" Margin="2"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="6" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="6" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="FileWatch arkiv sökväg:" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="6" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.Column="1" Grid.ColumnSpan="3">
+        <Border Grid.Row="6" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.Column="1" Grid.ColumnSpan="3">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="FileWatchArchivePath" Text="-" Foreground="White" VerticalAlignment="Center" Background="#809dae" Margin="2"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="7" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="7" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="Logg Maskin 1 sökväg:" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="7" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.Column="1" Grid.ColumnSpan="3">
+        <Border Grid.Row="7" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.Column="1" Grid.ColumnSpan="3">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="Log1Path" Text="-" Foreground="White" VerticalAlignment="Center" Background="#809dae" Margin="2"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="8" Background="#406c85" BorderThickness="0.6" BorderBrush="Black" Grid.ColumnSpan="1">
+        <Border Grid.Row="8" Background="#406c85" BorderThickness="0.6" BorderBrush="LightGray" Grid.ColumnSpan="1">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <Label Content="Logg Maskin 2 sökväg:" Foreground="White"/>
                 </StackPanel>
             </Viewbox>
         </Border>
-        <Border Grid.Row="8" Background="#809dae" BorderThickness="0.6" BorderBrush="Black" Grid.Column="1" Grid.ColumnSpan="3">
+        <Border Grid.Row="8" Background="#809dae" BorderThickness="0.6" BorderBrush="LightGray" Grid.Column="1" Grid.ColumnSpan="3">
             <Viewbox>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox x:Name="Log2Path" Text="-" Foreground="White" VerticalAlignment="Center" Background="#809dae" Margin="2"/>

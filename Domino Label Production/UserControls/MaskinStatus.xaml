@@ -48,6 +48,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -144,6 +145,14 @@
                 <Border Grid.Row="11" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Råmaterial LOT:" Foreground="White"/>
+                            <Label x:Name="rawmatLOT" Foreground="White" Content="-" VerticalAlignment="Center" Background="#406c85"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="12" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <Label Content="LOT:" Foreground="White"/>
                             <TextBox x:Name="lotSign" Text="SK" Foreground="White" VerticalAlignment="Center" Background="#406c85"/>
                             <Label x:Name="LOTLabel" Foreground="White" Content="-" VerticalAlignment="Center" Background="#406c85"/>
@@ -155,6 +164,7 @@
         <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Margin="10,0,10,0">
             <Grid x:Name="Maskin2Grid">
                 <Grid.RowDefinitions>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -261,6 +271,14 @@
                     </Viewbox>
                 </Border>
                 <Border Grid.Row="11" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
+                    <Viewbox>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <Label Content="Råmaterial LOT:" Foreground="White"/>
+                            <Label x:Name="rawmatLOTM2" Foreground="White" Content="-" VerticalAlignment="Center" Background="#406c85"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Border>
+                <Border Grid.Row="12" Background="#406c85" BorderThickness="1" Grid.ColumnSpan="2">
                     <Viewbox>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <Label Content="LOT:" Foreground="White"/>
