@@ -36,6 +36,7 @@ namespace Domino_Label_Production
         OrderListaUC orderListaUC = new OrderListaUC();
         SettingsUC settingsUC = new SettingsUC();
         bool maskinStatusView;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +48,8 @@ namespace Domino_Label_Production
             //listener.Start();
             
             service.Watch();
+            MemoryRead();
+
         }
 
         private void TillverkningsOrderLista_Click(object sender, RoutedEventArgs e)
@@ -60,18 +63,27 @@ namespace Domino_Label_Production
 
         public void SelectedOrderMaskin1(Orders order)
         {
-            maskinStatusUC.orderLabel.Content = order.TillverkningsOrderNummer;
-            maskinStatusUC.kundLabel.Content = order.KundNummer;
-            maskinStatusUC.datumLabel.Content = order.Leveransdatum;
-            maskinStatusUC.artnrLabel.Content = order.ArtikelNummer;
-            maskinStatusUC.artnamnLabel.Content = order.ArtikelNamn;
-            maskinStatusUC.antalLabel.Content = order.AntalRulle;
-            maskinStatusUC.cylinderLabel.Content = order.Cylinder;
-            maskinStatusUC.stansLabel.Content = order.Stans;
-            maskinStatusUC.diameterLabel.Content = order.Diameter;
-            maskinStatusUC.tillPLCLabel.Content = FormatPLC(order.ArtikelNamn, order.LotNr);
-            maskinStatusUC.rawmatText.Text = order.RåMaterialNummer;
-            maskinStatusUC.LOTLabel.Content = FormatLOT(1, true);
+            try
+            {
+                maskinStatusUC.orderLabel.Content = order.TillverkningsOrderNummer;
+                maskinStatusUC.kundLabel.Content = order.KundNummer;
+                maskinStatusUC.datumLabel.Content = order.Leveransdatum;
+                maskinStatusUC.artnrLabel.Content = order.ArtikelNummer;
+                maskinStatusUC.artnamnLabel.Content = order.ArtikelNamn;
+                maskinStatusUC.antalLabel.Content = order.AntalRulle;
+                maskinStatusUC.cylinderLabel.Content = order.Cylinder;
+                maskinStatusUC.stansLabel.Content = order.Stans;
+                maskinStatusUC.diameterLabel.Content = order.Diameter;
+                maskinStatusUC.tillPLCLabel.Content = FormatPLC(order.ArtikelNamn, order.LotNr);
+                maskinStatusUC.rawmatText.Text = order.RåMaterialNummer;
+                maskinStatusUC.LOTLabel.Content = FormatLOT(1, true);
+                MemoryWrite(1, order);
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Fel");
+            }
+            
         }
 
         public void SelectedOrderMaskin2(Orders order)
@@ -88,6 +100,7 @@ namespace Domino_Label_Production
             maskinStatusUC.tillPLCLabelM2.Content = FormatPLC(order.ArtikelNamn, order.LotNr);
             maskinStatusUC.rawmatTextM2.Text = order.RåMaterialNummer;
             maskinStatusUC.LOTLabelM2.Content = FormatLOT(2, true);
+            MemoryWrite(2, order);
         }
 
         private string FormatPLC(string artNamn, string LOT)
@@ -135,6 +148,170 @@ namespace Domino_Label_Production
                     return maskin.ToString() + lotYY + lotDDD + lotRM2.ToString();
                 }
             }          
+        }
+
+        private void MemoryWrite(int maskin, Orders order)
+        {
+            string root = string.Empty;
+            string lot = string.Empty;
+            try
+            {
+                if(maskin == 1)
+                {
+                    root = @"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\minne1.txt";
+                    //System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location + "minne1.txt");
+                    lot = maskinStatusUC.LOTLabel.Content.ToString();
+                }
+                else if(maskin == 2)
+                {
+                    root = @"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\minne2.txt";
+                    //System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location + "minne2.txt");
+                    lot = maskinStatusUC.LOTLabelM2.Content.ToString();
+                }
+                using (StreamWriter w = File.CreateText(root))
+                {
+                    w.WriteLine(order.TillverkningsOrderNummer);
+                    w.WriteLine(order.KundNummer);
+                    w.WriteLine(order.Leveransdatum);
+                    w.WriteLine(order.ArtikelNummer);
+                    w.WriteLine(order.ArtikelNamn);
+                    w.WriteLine(order.AntalRulle);
+                    w.WriteLine(order.Cylinder);
+                    w.WriteLine(order.Stans);
+                    w.WriteLine(order.Diameter);
+                    w.WriteLine(FormatPLC(order.ArtikelNamn, order.LotNr));
+                    w.WriteLine(order.RåMaterialNummer);
+                    w.WriteLine(lot);
+                }
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Fel vid minne.");
+            }
+        }
+        
+        private void MemoryRead()
+        {
+            try
+            {
+                if (File.Exists(@"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\minne1.txt"))
+                {
+                    var lines = File.ReadAllLines(@"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\minne1.txt");
+                    maskinStatusUC.orderLabel.Content = lines[0];
+                    maskinStatusUC.kundLabel.Content = lines[1];
+                    maskinStatusUC.datumLabel.Content = lines[2];
+                    maskinStatusUC.artnrLabel.Content = lines[3];
+                    maskinStatusUC.artnamnLabel.Content = lines[4];
+                    maskinStatusUC.antalLabel.Content = lines[5];
+                    maskinStatusUC.cylinderLabel.Content = lines[6];
+                    maskinStatusUC.stansLabel.Content = lines[7];
+                    maskinStatusUC.diameterLabel.Content = lines[8];
+                    maskinStatusUC.tillPLCLabel.Content = lines[9];
+                    maskinStatusUC.rawmatText.Text = lines[10];
+                    maskinStatusUC.LOTLabel.Content = lines[11];
+                }
+                if (File.Exists(@"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\minne2.txt"))
+                {
+                    var lines = File.ReadAllLines(@"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\minne2.txt");
+                    maskinStatusUC.orderLabelM2.Content = lines[0];
+                    maskinStatusUC.kundLabelM2.Content = lines[1];
+                    maskinStatusUC.datumLabelM2.Content = lines[2];
+                    maskinStatusUC.artnrLabelM2.Content = lines[3];
+                    maskinStatusUC.artnamnLabelM2.Content = lines[4];
+                    maskinStatusUC.antalLabelM2.Content = lines[5];
+                    maskinStatusUC.cylinderLabelM2.Content = lines[6];
+                    maskinStatusUC.stansLabelM2.Content = lines[7];
+                    maskinStatusUC.diameterLabelM2.Content = lines[8];
+                    maskinStatusUC.tillPLCLabelM2.Content = lines[9];
+                    maskinStatusUC.rawmatTextM2.Text = lines[10];
+                    maskinStatusUC.LOTLabelM2.Content = lines[11];
+                }
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Fel vid inläsning av minne.");
+            }
+            
+        }
+
+        private void LogWriter(int maskin, string orderNr, string artNr, string lot, string rawMat, string rawMatLot, int status)
+        {
+            try
+            {
+                if (maskin == 1)
+                {
+                    if (status == 1)
+                    {
+                        using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin1LogPath + orderNr + ".txt"))
+                        {
+                            w.Write("\r\nPåbörjad Order: ");
+                            w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
+                            w.WriteLine($"{orderNr} | {artNr} | {lot} | {rawMat}");
+                            w.WriteLine("---------------------------------");
+                        };
+                    }
+                    else if (status == 2)
+                    {
+                        using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin1LogPath + orderNr + ".txt"))
+                        {
+                            w.Write("\r\nÄndrad order: ");
+                            w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
+                            w.WriteLine($"{lot} | {rawMat} | {rawMatLot}");
+                            w.WriteLine("---------------------------------");
+                        };
+                    }
+                    else
+                    {
+                        using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin1LogPath + orderNr + ".txt"))
+                        {
+                            w.Write("\r\nAvslutad order: ");
+                            w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
+                            w.WriteLine($"{orderNr} | {artNr} | {lot} | {rawMat} | {rawMatLot}");
+                            w.WriteLine("---------------------------------");
+                        };
+                    }
+
+                }
+                else
+                {
+                    if (status == 1)
+                    {
+                        using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin2LogPath + orderNr + ".txt"))
+                        {
+                            w.Write("\r\nPåbörjad Order: ");
+                            w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
+                            w.WriteLine($"{orderNr} | {artNr} | {lot} | {rawMat}");
+                            w.WriteLine("---------------------------------");
+                        };
+                    }
+                    else if (status == 2)
+                    {
+                        using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin2LogPath + orderNr + ".txt"))
+                        {
+                            w.Write("\r\nÄndrad order: ");
+                            w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
+                            w.WriteLine($"{lot} | {rawMat} | {rawMatLot}");
+                            w.WriteLine("---------------------------------");
+                        };
+                    }
+                    else
+                    {
+                        using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin2LogPath + orderNr + ".txt"))
+                        {
+                            w.Write("\r\nAvslutad order: ");
+                            w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
+                            w.WriteLine($"{orderNr} | {artNr} | {lot} | {rawMat} | {rawMatLot}");
+                            w.WriteLine("---------------------------------");
+                        };
+                    }
+                }
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Fel vid loggning");
+            }
+            
+            
         }
 
         //private void ScannerListen(int maskin)
@@ -304,8 +481,14 @@ namespace Domino_Label_Production
                         maskinStatusUC.antalLabel.Content.ToString(),
                         maskinStatusUC.orderLabel.Content.ToString(),
                         maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString());
-                    SendToPLC1(maskinStatusUC.tillPLCLabel.Content.ToString());
+                    SendToPLC(1, maskinStatusUC.tillPLCLabel.Content.ToString());
                     SendToAx(1, maskinStatusUC.orderLabel.Content.ToString(), maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString());
+                    LogWriter(1, maskinStatusUC.orderLabel.Content.ToString(),
+                        maskinStatusUC.artnrLabel.Content.ToString(),
+                        maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString(),
+                        maskinStatusUC.rawmatText.Text.ToString(),
+                        maskinStatusUC.rawmatLOT.Content.ToString(), 
+                        1);
                     break;
                 case MessageBoxResult.No:
                     ScannerConnect(2);
@@ -319,7 +502,7 @@ namespace Domino_Label_Production
                         maskinStatusUC.antalLabelM2.Content.ToString(),
                         maskinStatusUC.orderLabelM2.Content.ToString(),
                         maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString());
-                    SendToPLC2(maskinStatusUC.tillPLCLabelM2.Content.ToString());
+                    SendToPLC(2, maskinStatusUC.tillPLCLabelM2.Content.ToString());
                     SendToAx(2, maskinStatusUC.orderLabelM2.Content.ToString(), maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString());
                     break;
                 default:
@@ -327,16 +510,27 @@ namespace Domino_Label_Production
             }
         }
 
+        //TA ÄVEN BORT MINNE 1/2
         private void AvslutaOrder_Click(object sender, RoutedEventArgs e)
         {
             var result = CustomMessageBox.ShowYesNoCancel("Välj maskin att avsluta order på:", "Avsluta Order", "Maskin 1", "Maskin 2", "Avbryt", MessageBoxImage.Information);
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    AvslutaOrder1(maskinStatusUC.artnrLabel.Content.ToString(), maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString(), maskinStatusUC.orderLabel.Content.ToString());
+                    LogWriter(1, maskinStatusUC.orderLabel.Content.ToString(),
+                        maskinStatusUC.artnrLabel.Content.ToString(),
+                        maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString(),
+                        maskinStatusUC.rawmatText.Text.ToString(),
+                        maskinStatusUC.rawmatLOT.Content.ToString(),
+                        3);
+                    AvslutaOrder(1, maskinStatusUC.artnrLabel.Content.ToString(), 
+                        maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString(), 
+                        maskinStatusUC.orderLabel.Content.ToString());
                     break;
                 case MessageBoxResult.No:
-                    AvslutaOrder2(maskinStatusUC.artnrLabelM2.Content.ToString(), maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString(), maskinStatusUC.orderLabelM2.Content.ToString());
+                    AvslutaOrder(2, maskinStatusUC.artnrLabelM2.Content.ToString(),
+                        maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString(), 
+                        maskinStatusUC.orderLabelM2.Content.ToString());
                     break;
                 default:
                     break;
@@ -474,121 +668,113 @@ namespace Domino_Label_Production
             }
         }
 
-        static void SendToPLC1(string toPLC)
+        static void SendToPLC(int maskin, string toPLC)
         {
             try
             {
-                string PLC1IP = Properties.Settings.Default.PLC1IP;
-                int PLC1Port = Properties.Settings.Default.PLC1Port;
-                TcpClient client = new TcpClient(PLC1IP, PLC1Port);
-                string message = toPLC;
-
-                byte[] data = Encoding.ASCII.GetBytes(message);
-                NetworkStream stream = client.GetStream();
-                stream.Write(data, 0, data.Length);
-                Console.WriteLine("Sent: {0}", message);
-
-                data = new byte[256];
-                string response = string.Empty;
-
-                int bytes = stream.Read(data, 0, data.Length);
-                response = Encoding.ASCII.GetString(data, 0, bytes);
-                Console.WriteLine("Recieved: {0}", response);
-
-                stream.Close();
-                client.Close();
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show("Fel vid utskick till PLC: " + (char)10 + err.Message, "Fel PLC1", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        static void SendToPLC2(string toPLC)
-        {
-            try
-            {
-                string PLC2IP = Properties.Settings.Default.PLC2IP;
-                int PLC2Port = Properties.Settings.Default.PLC2Port;
-                TcpClient client = new TcpClient(PLC2IP, PLC2Port);
-                string message = toPLC;
-
-                byte[] data = Encoding.ASCII.GetBytes(message);
-                NetworkStream stream = client.GetStream();
-                stream.Write(data, 0, data.Length);
-                Console.WriteLine("Sent: {0}", message);
-
-                data = new byte[256];
-                string response = string.Empty;
-
-                int bytes = stream.Read(data, 0, data.Length);
-                response = Encoding.ASCII.GetString(data, 0, bytes);
-                Console.WriteLine("Recieved: {0}", response);
-
-                stream.Close();
-                client.Close();
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show("Fel vid utskick till PLC: " + (char)10 + err.Message, "Fel PLC2", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        public void AvslutaOrder1(string artNr, string lot, string orderNr)
-        {
-            try
-            {
-                using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin1LogPath + "LoggMaskin1.txt"))
+                string PLCIP = string.Empty;
+                int PLCPort = 0;
+                if (maskin == 1)
                 {
-                    w.Write("\r\nAvslutad Order : ");
-                    w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
-                    w.WriteLine($"{orderNr} | {artNr} | {lot}");
-                    w.WriteLine("---------------------------------");
-                };
-
-                maskinStatusUC.orderLabel.Content = "-";
-                maskinStatusUC.kundLabel.Content = "-";
-                maskinStatusUC.datumLabel.Content = "-";
-                maskinStatusUC.artnrLabel.Content = "-";
-                maskinStatusUC.artnamnLabel.Content = "-";
-                maskinStatusUC.antalLabel.Content = "-";
-                maskinStatusUC.cylinderLabel.Content = "-";
-                maskinStatusUC.stansLabel.Content = "-";
-                maskinStatusUC.diameterLabel.Content = "-";
-                maskinStatusUC.tillPLCLabel.Content = "-";
-                maskinStatusUC.rawmatText.Text = "-";
-                maskinStatusUC.LOTLabel.Content = "-";
-            }
-            catch(Exception err)
-            {
-                MessageBox.Show(err.Message);
-            }
-        }
-
-        public void AvslutaOrder2(string artNr, string lot, string orderNr)
-        {
-            try
-            {
-                using (StreamWriter w = File.AppendText(Properties.Settings.Default.Maskin2LogPath + "LoggMaskin2.txt"))
-                {
-                    w.Write("\r\nAvslutad Order : ");
-                    w.WriteLine($"{DateTime.Now.ToShortTimeString()} {DateTime.Now.ToShortDateString()}");
-                    w.WriteLine($"{orderNr} | {artNr} | {lot}");
-                    w.WriteLine("---------------------------------");
+                    PLCIP = Properties.Settings.Default.PLC1IP;
+                    PLCPort = Properties.Settings.Default.PLC1Port;
                 }
+                else if(maskin == 2)
+                {
+                    PLCIP = Properties.Settings.Default.PLC2IP;
+                    PLCPort = Properties.Settings.Default.PLC2Port;
+                }
+                
+                TcpClient client = new TcpClient(PLCIP, PLCPort);
+                string message = toPLC;
 
-                maskinStatusUC.orderLabelM2.Content = "-";
-                maskinStatusUC.kundLabelM2.Content = "-";
-                maskinStatusUC.datumLabelM2.Content = "-";
-                maskinStatusUC.artnrLabelM2.Content = "-";
-                maskinStatusUC.artnamnLabelM2.Content = "-";
-                maskinStatusUC.antalLabelM2.Content = "-";
-                maskinStatusUC.cylinderLabelM2.Content = "-";
-                maskinStatusUC.stansLabelM2.Content = "-";
-                maskinStatusUC.diameterLabelM2.Content = "-";
-                maskinStatusUC.tillPLCLabelM2.Content = "-";
-                maskinStatusUC.rawmatTextM2.Text = "-";
-                maskinStatusUC.LOTLabelM2.Content = "-";
+                byte[] data = Encoding.ASCII.GetBytes(message);
+                NetworkStream stream = client.GetStream();
+                stream.Write(data, 0, data.Length);
+                Console.WriteLine("Sent: {0}", message);
+
+                data = new byte[256];
+                string response = string.Empty;
+
+                int bytes = stream.Read(data, 0, data.Length);
+                response = Encoding.ASCII.GetString(data, 0, bytes);
+                Console.WriteLine("Recieved: {0}", response);
+
+                stream.Close();
+                client.Close();
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show("Fel vid utskick till PLC: " + (char)10 + err.Message, "Fel PLC", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        //static void SendToPLC2(string toPLC)
+        //{
+        //    try
+        //    {
+        //        string PLC2IP = Properties.Settings.Default.PLC2IP;
+        //        int PLC2Port = Properties.Settings.Default.PLC2Port;
+        //        TcpClient client = new TcpClient(PLC2IP, PLC2Port);
+        //        string message = toPLC;
+
+        //        byte[] data = Encoding.ASCII.GetBytes(message);
+        //        NetworkStream stream = client.GetStream();
+        //        stream.Write(data, 0, data.Length);
+        //        Console.WriteLine("Sent: {0}", message);
+
+        //        data = new byte[256];
+        //        string response = string.Empty;
+
+        //        int bytes = stream.Read(data, 0, data.Length);
+        //        response = Encoding.ASCII.GetString(data, 0, bytes);
+        //        Console.WriteLine("Recieved: {0}", response);
+
+        //        stream.Close();
+        //        client.Close();
+        //    }
+        //    catch(Exception err)
+        //    {
+        //        MessageBox.Show("Fel vid utskick till PLC: " + (char)10 + err.Message, "Fel PLC2", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
+
+        public void AvslutaOrder(int maskin, string artNr, string lot, string orderNr)
+        {
+            try
+            {
+                if(maskin == 1)
+                {
+                    maskinStatusUC.orderLabel.Content = "-";
+                    maskinStatusUC.kundLabel.Content = "-";
+                    maskinStatusUC.datumLabel.Content = "-";
+                    maskinStatusUC.artnrLabel.Content = "-";
+                    maskinStatusUC.artnamnLabel.Content = "-";
+                    maskinStatusUC.antalLabel.Content = "-";
+                    maskinStatusUC.cylinderLabel.Content = "-";
+                    maskinStatusUC.stansLabel.Content = "-";
+                    maskinStatusUC.diameterLabel.Content = "-";
+                    maskinStatusUC.tillPLCLabel.Content = "-";
+                    maskinStatusUC.rawmatText.Text = "-";
+                    maskinStatusUC.rawmatLOT.Content = "-";
+                    maskinStatusUC.LOTLabel.Content = "-";
+                }
+                else if(maskin == 2)
+                {
+                    maskinStatusUC.orderLabelM2.Content = "-";
+                    maskinStatusUC.kundLabelM2.Content = "-";
+                    maskinStatusUC.datumLabelM2.Content = "-";
+                    maskinStatusUC.artnrLabelM2.Content = "-";
+                    maskinStatusUC.artnamnLabelM2.Content = "-";
+                    maskinStatusUC.antalLabelM2.Content = "-";
+                    maskinStatusUC.cylinderLabelM2.Content = "-";
+                    maskinStatusUC.stansLabelM2.Content = "-";
+                    maskinStatusUC.diameterLabelM2.Content = "-";
+                    maskinStatusUC.tillPLCLabelM2.Content = "-";
+                    maskinStatusUC.rawmatTextM2.Text = "-";
+                    maskinStatusUC.rawmatLOTM2.Content = "-";
+                    maskinStatusUC.LOTLabelM2.Content = "-";
+                }
             }
             catch(Exception err)
             {
@@ -605,6 +791,12 @@ namespace Domino_Label_Production
                     ScannerConnect(1);
                     maskinStatusUC.LOTLabel.Content = FormatLOT(1, false);
                     SendToAx(1, maskinStatusUC.orderLabel.Content.ToString(), maskinStatusUC.LOTLabel.Content.ToString());
+                    LogWriter(1, maskinStatusUC.orderLabel.Content.ToString(),
+                        maskinStatusUC.artnrLabel.Content.ToString(),
+                        maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString(),
+                        maskinStatusUC.rawmatText.Text.ToString(),
+                        maskinStatusUC.rawmatLOT.Content.ToString(),
+                        2);
                     break;
                 case MessageBoxResult.No:
                     ScannerConnect(2);
