@@ -758,6 +758,7 @@ namespace Domino_Label_Production
                     maskinStatusUC.rawmatText.Text = "-";
                     maskinStatusUC.rawmatLOT.Content = "-";
                     maskinStatusUC.LOTLabel.Content = "-";
+                    File.Delete(@"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\minne1.txt");
                 }
                 else if(maskin == 2)
                 {
@@ -774,6 +775,7 @@ namespace Domino_Label_Production
                     maskinStatusUC.rawmatTextM2.Text = "-";
                     maskinStatusUC.rawmatLOTM2.Content = "-";
                     maskinStatusUC.LOTLabelM2.Content = "-";
+                    File.Delete(@"C:\Users\timmy.staaf\Desktop\Misc\EtikettProduktion\minne2.txt");
                 }
             }
             catch(Exception err)

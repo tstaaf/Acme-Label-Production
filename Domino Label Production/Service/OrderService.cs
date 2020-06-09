@@ -66,7 +66,9 @@ namespace Domino_Label_Production.Service
                         ArtikelNummer = lastread[5],
                         ArtikelNamn = lastread[6],
                         RåMaterialNummer = lastread[20],
-                        LotNr = antalRullar
+                        LotNr = antalRullar,
+                        VORDNR = lastread[17],
+                        INFO1 = lastread[12]
                     };
 
                     entities.Orders.Add(order);

@@ -11,14 +11,13 @@ namespace Domino_Label_Production.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-
+    
     public partial class Orders
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Orders()
         {
-            this.Orders1 = new ObservableCollection<Orders>();
+            this.Orders1 = new HashSet<Orders>();
         }
     
         public int Id { get; set; }
@@ -34,9 +33,12 @@ namespace Domino_Label_Production.Models
         public string RåMaterialNummer { get; set; }
         public string LotNr { get; set; }
         public Nullable<int> Order_Id { get; set; }
+        public string VORDNR { get; set; }
+        public string INFO1 { get; set; }
+        public string INFO2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<Orders> Orders1 { get; set; }
+        public virtual ICollection<Orders> Orders1 { get; set; }
         public virtual Orders Orders2 { get; set; }
     }
 }

@@ -75,6 +75,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="idColumn" Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn x:Name="tillverkningsOrderNummerColumn" Header="Tillverkningsordernr." Binding="{Binding TillverkningsOrderNummer}"/>
+                <DataGridTextColumn x:Name="VORDNRColumn" Header="VORDnummer" Binding="{Binding VORDNR}"/>
                 <DataGridTextColumn x:Name="artikelNamnColumn" Header="Artikelnamn" Binding="{Binding ArtikelNamn}"/>
                 <DataGridTextColumn x:Name="artikelNummerColumn" Header="Artikelnummer" Binding="{Binding ArtikelNummer}"/>
                 <DataGridTextColumn x:Name="antalRulleColumn" Header="Antal Rulle" Binding="{Binding AntalRulle}"/>

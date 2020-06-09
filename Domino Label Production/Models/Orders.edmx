@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Domino_Label_Production.OrderContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Domino_Label_Production.OrderContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="Id" />
@@ -22,6 +22,9 @@
           <Property Name="RåMaterialNummer" Type="nvarchar(max)" />
           <Property Name="LotNr" Type="nvarchar(max)" />
           <Property Name="Order_Id" Type="int" />
+          <Property Name="VORDNR" Type="nvarchar(max)" />
+          <Property Name="INFO1" Type="nvarchar(max)" />
+          <Property Name="INFO2" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_dbo_Orders_dbo_Orders_Order_Id">
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
@@ -42,8 +45,7 @@
             <End Role="Orders1" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Domino_Label_Production.OrderContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -66,6 +68,9 @@
           <Property Name="Order_Id" Type="Int32" />
           <NavigationProperty Name="Orders1" Relationship="Self.FK_dbo_Orders_dbo_Orders_Order_Id" FromRole="Orders" ToRole="Orders1" />
           <NavigationProperty Name="Orders2" Relationship="Self.FK_dbo_Orders_dbo_Orders_Order_Id" FromRole="Orders1" ToRole="Orders" />
+          <Property Name="VORDNR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INFO1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INFO2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_dbo_Orders_dbo_Orders_Order_Id">
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
@@ -95,6 +100,9 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Domino_Label_Production.OrderContextModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="INFO2" ColumnName="INFO2" />
+                <ScalarProperty Name="INFO1" ColumnName="INFO1" />
+                <ScalarProperty Name="VORDNR" ColumnName="VORDNR" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TillverkningsOrderNummer" ColumnName="TillverkningsOrderNummer" />
                 <ScalarProperty Name="KundNummer" ColumnName="KundNummer" />
