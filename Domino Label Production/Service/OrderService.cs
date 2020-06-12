@@ -50,16 +50,26 @@ namespace Domino_Label_Production.Service
                     }
                     lastread[7] = lastread[7].Split(':').Last();
                     lastread[8] = lastread[8].Split(':').Last();
+                    lastread[11] = lastread[11].Split(':').Last();
+                    lastread[6] = lastread[6].Split(',').First();
                     lastread[7] = lastread[7].Trim();
                     lastread[8] = lastread[8].Trim();
+                    lastread[11] = lastread[11].Trim();
+                    lastread[6] = lastread[6].Trim();
+                    if (lastread[14].Contains("IKEA"))
+                    {
+                        lastread[5] = lastread[14];
+                    }
+
                     string antalRullar = Regex.Match(lastread[13], @"\d+").Value;
 
                     Orders order = new Orders
                     {
                         TillverkningsOrderNummer = lastread[1],
                         KundNummer = lastread[15],
-                        Leveransdatum = lastread[2],
-                        AntalRulle = lastread[3],
+                        INFO2 = lastread[16],
+                        Leveransdatum = lastread[4],
+                        AntalRulle = lastread[11],
                         Cylinder = lastread[7],
                         Stans = lastread[8],
                         Diameter = lastread[9],
