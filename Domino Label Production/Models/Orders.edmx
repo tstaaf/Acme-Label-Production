@@ -25,6 +25,9 @@
           <Property Name="VORDNR" Type="nvarchar(max)" />
           <Property Name="INFO1" Type="nvarchar(max)" />
           <Property Name="INFO2" Type="nvarchar(max)" />
+          <Property Name="INFO4" Type="nvarchar(max)" />
+          <Property Name="INFO6" Type="nvarchar(max)" />
+          <Property Name="TANT" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_dbo_Orders_dbo_Orders_Order_Id">
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
@@ -71,6 +74,9 @@
           <Property Name="VORDNR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="INFO1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="INFO2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INFO4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INFO6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TANT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_dbo_Orders_dbo_Orders_Order_Id">
           <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
@@ -100,6 +106,9 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Domino_Label_Production.OrderContextModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="TANT" ColumnName="TANT" />
+                <ScalarProperty Name="INFO6" ColumnName="INFO6" />
+                <ScalarProperty Name="INFO4" ColumnName="INFO4" />
                 <ScalarProperty Name="INFO2" ColumnName="INFO2" />
                 <ScalarProperty Name="INFO1" ColumnName="INFO1" />
                 <ScalarProperty Name="VORDNR" ColumnName="VORDNR" />

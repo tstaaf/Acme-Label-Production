@@ -31,7 +31,7 @@ namespace Domino_Label_Production.Service
                 {
                     List<string> lines = new List<string>();
 
-                    using (StreamReader reader = new StreamReader(WaitForFile(e.FullPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                    using (StreamReader reader = new StreamReader(WaitForFile(e.FullPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite),System.Text.Encoding.Default))
                     {
                         var line = reader.ReadLine();
                         while (line != null)
@@ -52,12 +52,21 @@ namespace Domino_Label_Production.Service
                     lastread[8] = lastread[8].Split(':').Last();
                     lastread[11] = lastread[11].Split(':').Last();
                     lastread[6] = lastread[6].Split(',').First();
+                    lastread[10] = lastread[10].Split(':').Last();
+                    lastread[12] = lastread[12].Split(':').Last();
+
                     lastread[7] = lastread[7].Trim();
                     lastread[8] = lastread[8].Trim();
                     lastread[11] = lastread[11].Trim();
                     lastread[6] = lastread[6].Trim();
+                    lastread[10] = lastread[10].Trim();
+                    lastread[12] = lastread[12].Trim();
+
                     if (lastread[14].Contains("IKEA"))
                     {
+                        lastread[6] = lastread[6].Remove(0, 7);
+                        lastread[6] = lastread[6] + " " + lastread[5];
+                        //lastread[6] = lastread[6].Trim();
                         lastread[5] = lastread[14];
                     }
 
@@ -78,7 +87,10 @@ namespace Domino_Label_Production.Service
                         RåMaterialNummer = lastread[20],
                         LotNr = antalRullar,
                         VORDNR = lastread[17],
-                        INFO1 = lastread[12]
+                        INFO1 = lastread[12],
+                        INFO4 = lastread[10],
+                        INFO6 = lastread[12],
+                        TANT = lastread[3]
                     };
 
                     entities.Orders.Add(order);

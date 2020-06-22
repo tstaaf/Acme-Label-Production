@@ -508,6 +508,12 @@ namespace Domino_Label_Production
                         maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString());
                     SendToPLC(2, maskinStatusUC.tillPLCLabelM2.Content.ToString());
                     SendToAx(2, maskinStatusUC.VORDNRLabelM2.Content.ToString(), maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString());
+                    LogWriter(2, maskinStatusUC.orderLabelM2.Content.ToString(),
+                       maskinStatusUC.artnrLabelM2.Content.ToString(),
+                       maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString(),
+                       maskinStatusUC.rawmatTextM2.Text.ToString(),
+                       maskinStatusUC.rawmatLOTM2.Content.ToString(),
+                       1);
                     break;
                 default:
                     break;
@@ -532,6 +538,12 @@ namespace Domino_Label_Production
                         maskinStatusUC.VORDNRLabelM2.Content.ToString());
                     break;
                 case MessageBoxResult.No:
+                    LogWriter(2, maskinStatusUC.orderLabelM2.Content.ToString(),
+                        maskinStatusUC.artnrLabelM2.Content.ToString(),
+                        maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString(),
+                        maskinStatusUC.rawmatTextM2.Text.ToString(),
+                        maskinStatusUC.rawmatLOTM2.Content.ToString(),
+                        3);
                     AvslutaOrder(2, maskinStatusUC.artnrLabelM2.Content.ToString(),
                         maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString(), 
                         maskinStatusUC.VORDNRLabelM2.Content.ToString());
@@ -797,6 +809,11 @@ namespace Domino_Label_Production
                     ScannerConnect(1);
                     maskinStatusUC.LOTLabel.Content = FormatLOT(1, false);
                     SendToAx(1, maskinStatusUC.VORDNRLabelM2.Content.ToString(), maskinStatusUC.LOTLabel.Content.ToString());
+                    SendToQD(1, maskinStatusUC.artnrLabel.Content.ToString(),
+                        maskinStatusUC.artnamnLabel.Content.ToString(),
+                        maskinStatusUC.antalLabel.Content.ToString(),
+                        maskinStatusUC.orderLabel.Content.ToString(),
+                        maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString());
                     LogWriter(1, maskinStatusUC.VORDNRLabelM2.Content.ToString(),
                         maskinStatusUC.artnrLabel.Content.ToString(),
                         maskinStatusUC.lotSign.Text.ToString() + maskinStatusUC.LOTLabel.Content.ToString(),
@@ -808,6 +825,17 @@ namespace Domino_Label_Production
                     ScannerConnect(2);
                     maskinStatusUC.LOTLabelM2.Content = FormatLOT(2, false);
                     SendToAx(2, maskinStatusUC.VORDNRLabelM2.Content.ToString(), maskinStatusUC.LOTLabelM2.Content.ToString());
+                    SendToQD(2, maskinStatusUC.artnrLabelM2.Content.ToString(),
+                        maskinStatusUC.artnamnLabelM2.Content.ToString(),
+                        maskinStatusUC.antalLabelM2.Content.ToString(),
+                        maskinStatusUC.orderLabelM2.Content.ToString(),
+                        maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString());
+                    LogWriter(2, maskinStatusUC.orderLabelM2.Content.ToString(),
+                        maskinStatusUC.artnrLabelM2.Content.ToString(),
+                        maskinStatusUC.lotSignM2.Text.ToString() + maskinStatusUC.LOTLabelM2.Content.ToString(),
+                        maskinStatusUC.rawmatTextM2.Text.ToString(),
+                        maskinStatusUC.rawmatLOTM2.Content.ToString(),
+                        2);
                     break;
                 default:
                     break;

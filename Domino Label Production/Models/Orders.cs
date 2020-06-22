@@ -36,6 +36,9 @@ namespace Domino_Label_Production.Models
         public string VORDNR { get; set; }
         public string INFO1 { get; set; }
         public string INFO2 { get; set; }
+        public string INFO4 { get; set; }
+        public string INFO6 { get; set; }
+        public string TANT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders1 { get; set; }
