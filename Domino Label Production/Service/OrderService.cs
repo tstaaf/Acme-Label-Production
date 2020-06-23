@@ -87,7 +87,7 @@ namespace Domino_Label_Production.Service
                         RåMaterialNummer = lastread[20],
                         LotNr = antalRullar,
                         VORDNR = lastread[17],
-                        INFO1 = lastread[12],
+                        INFO1 = lastread[24],
                         INFO4 = lastread[10],
                         INFO6 = lastread[12],
                         TANT = lastread[3]
